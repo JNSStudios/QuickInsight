@@ -1,0 +1,171 @@
+{
+  "kind": "analyticsData#runReport",
+  "dimensionHeaders": [
+    {
+      "name": "itemName"
+    }
+  ],
+  "metricHeaders": [
+    {
+      "name": "itemQuantity",
+      "type": "TYPE_INTEGER"
+    },
+    {
+      "name": "itemRevenue",
+      "type": "TYPE_DOUBLE"
+    }
+  ],
+  "rows": [
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Zip Hoodie F/C"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "256"
+        },
+        {
+          "value": "12936.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Crewneck Sweatshirt Navy"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "225"
+        },
+        {
+          "value": "10219.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Men's Tech Fleece Grey"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "123"
+        },
+        {
+          "value": "9147.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Badge Heavyweight Pullover Black"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "184"
+        },
+        {
+          "value": "8920.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Super G Unisex Joggers"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "285"
+        },
+        {
+          "value": "8844.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Crewneck Sweatshirt Green"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "177"
+        },
+        {
+          "value": "8074.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Men's Puff Jacket Black"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "63"
+        },
+        {
+          "value": "6095.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Sherpa Zip Hoodie Charcoal"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "105"
+        },
+        {
+          "value": "5845.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Women's Puff Jacket Black"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "56"
+        },
+        {
+          "value": "5221.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "Google Utility BackPack"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "52"
+        },
+        {
+          "value": "5160.0"
+        }
+      ]
+    }
+  ],
+  "rowCount": 10
+}

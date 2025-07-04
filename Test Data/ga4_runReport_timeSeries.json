@@ -1,0 +1,1681 @@
+{
+  "kind": "analyticsData#runReport",
+  "dimensionHeaders": [
+    {
+      "name": "date"
+    }
+  ],
+  "metricHeaders": [
+    {
+      "name": "totalUsers",
+      "type": "TYPE_INTEGER"
+    },
+    {
+      "name": "purchases",
+      "type": "TYPE_INTEGER"
+    },
+    {
+      "name": "purchaseRevenue",
+      "type": "TYPE_DOUBLE"
+    }
+  ],
+  "rows": [
+    {
+      "dimensionValues": [
+        {
+          "value": "20201101"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2365"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "773.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3262"
+        },
+        {
+          "value": "49"
+        },
+        {
+          "value": "4789.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4648"
+        },
+        {
+          "value": "49"
+        },
+        {
+          "value": "3313.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3734"
+        },
+        {
+          "value": "46"
+        },
+        {
+          "value": "2197.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3272"
+        },
+        {
+          "value": "26"
+        },
+        {
+          "value": "1792.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2813"
+        },
+        {
+          "value": "58"
+        },
+        {
+          "value": "3438.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2004"
+        },
+        {
+          "value": "31"
+        },
+        {
+          "value": "2531.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1919"
+        },
+        {
+          "value": "32"
+        },
+        {
+          "value": "3760.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2805"
+        },
+        {
+          "value": "52"
+        },
+        {
+          "value": "2154.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3260"
+        },
+        {
+          "value": "64"
+        },
+        {
+          "value": "4041.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3296"
+        },
+        {
+          "value": "64"
+        },
+        {
+          "value": "4428.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3179"
+        },
+        {
+          "value": "54"
+        },
+        {
+          "value": "3349.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2860"
+        },
+        {
+          "value": "79"
+        },
+        {
+          "value": "5831.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2076"
+        },
+        {
+          "value": "30"
+        },
+        {
+          "value": "2338.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1957"
+        },
+        {
+          "value": "21"
+        },
+        {
+          "value": "1483.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3085"
+        },
+        {
+          "value": "69"
+        },
+        {
+          "value": "5046.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3449"
+        },
+        {
+          "value": "98"
+        },
+        {
+          "value": "6227.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3505"
+        },
+        {
+          "value": "68"
+        },
+        {
+          "value": "4575.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3566"
+        },
+        {
+          "value": "84"
+        },
+        {
+          "value": "5752.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3477"
+        },
+        {
+          "value": "118"
+        },
+        {
+          "value": "8792.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2755"
+        },
+        {
+          "value": "68"
+        },
+        {
+          "value": "4336.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2359"
+        },
+        {
+          "value": "60"
+        },
+        {
+          "value": "3428.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3421"
+        },
+        {
+          "value": "141"
+        },
+        {
+          "value": "8482.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3821"
+        },
+        {
+          "value": "147"
+        },
+        {
+          "value": "10345.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3988"
+        },
+        {
+          "value": "108"
+        },
+        {
+          "value": "8121.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3626"
+        },
+        {
+          "value": "57"
+        },
+        {
+          "value": "4133.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3512"
+        },
+        {
+          "value": "97"
+        },
+        {
+          "value": "6699.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3010"
+        },
+        {
+          "value": "78"
+        },
+        {
+          "value": "6255.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2887"
+        },
+        {
+          "value": "51"
+        },
+        {
+          "value": "3862.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3971"
+        },
+        {
+          "value": "141"
+        },
+        {
+          "value": "11990.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4308"
+        },
+        {
+          "value": "107"
+        },
+        {
+          "value": "6258.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4101"
+        },
+        {
+          "value": "82"
+        },
+        {
+          "value": "5201.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4464"
+        },
+        {
+          "value": "90"
+        },
+        {
+          "value": "4317.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4131"
+        },
+        {
+          "value": "96"
+        },
+        {
+          "value": "6458.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3082"
+        },
+        {
+          "value": "87"
+        },
+        {
+          "value": "6396.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2948"
+        },
+        {
+          "value": "42"
+        },
+        {
+          "value": "2328.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4709"
+        },
+        {
+          "value": "110"
+        },
+        {
+          "value": "8472.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "6689"
+        },
+        {
+          "value": "122"
+        },
+        {
+          "value": "8695.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "5531"
+        },
+        {
+          "value": "150"
+        },
+        {
+          "value": "10863.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "5241"
+        },
+        {
+          "value": "143"
+        },
+        {
+          "value": "10756.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4948"
+        },
+        {
+          "value": "160"
+        },
+        {
+          "value": "10400.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3750"
+        },
+        {
+          "value": "106"
+        },
+        {
+          "value": "6284.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3402"
+        },
+        {
+          "value": "74"
+        },
+        {
+          "value": "4395.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4552"
+        },
+        {
+          "value": "99"
+        },
+        {
+          "value": "8505.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4992"
+        },
+        {
+          "value": "139"
+        },
+        {
+          "value": "9738.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4820"
+        },
+        {
+          "value": "143"
+        },
+        {
+          "value": "11509.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4711"
+        },
+        {
+          "value": "126"
+        },
+        {
+          "value": "6745.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4261"
+        },
+        {
+          "value": "107"
+        },
+        {
+          "value": "6624.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3236"
+        },
+        {
+          "value": "52"
+        },
+        {
+          "value": "2782.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2966"
+        },
+        {
+          "value": "20"
+        },
+        {
+          "value": "1399.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3627"
+        },
+        {
+          "value": "53"
+        },
+        {
+          "value": "3429.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3405"
+        },
+        {
+          "value": "60"
+        },
+        {
+          "value": "3230.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3123"
+        },
+        {
+          "value": "67"
+        },
+        {
+          "value": "4418.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2601"
+        },
+        {
+          "value": "23"
+        },
+        {
+          "value": "1192.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2491"
+        },
+        {
+          "value": "17"
+        },
+        {
+          "value": "552.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2472"
+        },
+        {
+          "value": "17"
+        },
+        {
+          "value": "734.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2493"
+        },
+        {
+          "value": "20"
+        },
+        {
+          "value": "1161.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3042"
+        },
+        {
+          "value": "36"
+        },
+        {
+          "value": "2097.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3124"
+        },
+        {
+          "value": "24"
+        },
+        {
+          "value": "1418.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2955"
+        },
+        {
+          "value": "37"
+        },
+        {
+          "value": "1604.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2444"
+        },
+        {
+          "value": "25"
+        },
+        {
+          "value": "2595.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2160"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "975.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2581"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "1026.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2579"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "552.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3079"
+        },
+        {
+          "value": "16"
+        },
+        {
+          "value": "834.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4101"
+        },
+        {
+          "value": "29"
+        },
+        {
+          "value": "1143.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "5486"
+        },
+        {
+          "value": "31"
+        },
+        {
+          "value": "2000.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4171"
+        },
+        {
+          "value": "26"
+        },
+        {
+          "value": "1452.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3803"
+        },
+        {
+          "value": "34"
+        },
+        {
+          "value": "1699.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2958"
+        },
+        {
+          "value": "20"
+        },
+        {
+          "value": "1363.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2772"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "974.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3606"
+        },
+        {
+          "value": "28"
+        },
+        {
+          "value": "1496.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4195"
+        },
+        {
+          "value": "48"
+        },
+        {
+          "value": "2547.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4131"
+        },
+        {
+          "value": "36"
+        },
+        {
+          "value": "1858.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3909"
+        },
+        {
+          "value": "54"
+        },
+        {
+          "value": "3274.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3550"
+        },
+        {
+          "value": "47"
+        },
+        {
+          "value": "2071.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2892"
+        },
+        {
+          "value": "27"
+        },
+        {
+          "value": "1461.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2716"
+        },
+        {
+          "value": "14"
+        },
+        {
+          "value": "481.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3226"
+        },
+        {
+          "value": "19"
+        },
+        {
+          "value": "1223.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3713"
+        },
+        {
+          "value": "49"
+        },
+        {
+          "value": "3756.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4222"
+        },
+        {
+          "value": "96"
+        },
+        {
+          "value": "6706.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4198"
+        },
+        {
+          "value": "52"
+        },
+        {
+          "value": "4206.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3605"
+        },
+        {
+          "value": "100"
+        },
+        {
+          "value": "5552.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2824"
+        },
+        {
+          "value": "43"
+        },
+        {
+          "value": "2747.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2701"
+        },
+        {
+          "value": "36"
+        },
+        {
+          "value": "2408.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3507"
+        },
+        {
+          "value": "61"
+        },
+        {
+          "value": "3353.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3586"
+        },
+        {
+          "value": "55"
+        },
+        {
+          "value": "1259.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "4017"
+        },
+        {
+          "value": "54"
+        },
+        {
+          "value": "457.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3735"
+        },
+        {
+          "value": "69"
+        },
+        {
+          "value": "128.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "3386"
+        },
+        {
+          "value": "54"
+        },
+        {
+          "value": "190.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2610"
+        },
+        {
+          "value": "31"
+        },
+        {
+          "value": "159.0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2546"
+        },
+        {
+          "value": "19"
+        },
+        {
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "rowCount": 92
+}

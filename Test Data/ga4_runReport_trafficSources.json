@@ -1,0 +1,96 @@
+{
+  "kind": "analyticsData#runReport",
+  "dimensionHeaders": [
+    {
+      "name": "sessionSource"
+    }
+  ],
+  "metricHeaders": [
+    {
+      "name": "totalUsers",
+      "type": "TYPE_INTEGER"
+    },
+    {
+      "name": "purchases",
+      "type": "TYPE_INTEGER"
+    }
+  ],
+  "rows": [
+    {
+      "dimensionValues": [
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "117476"
+        },
+        {
+          "value": "1620"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "90751"
+        },
+        {
+          "value": "1290"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "75951"
+        },
+        {
+          "value": "1251"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "26065"
+        },
+        {
+          "value": "701"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "17951"
+        },
+        {
+          "value": "830"
+        }
+      ]
+    }
+  ],
+  "rowCount": 5
+}
