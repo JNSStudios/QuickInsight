@@ -1,15 +1,9 @@
 import React from 'react';
-import Layout from './components/Layout.jsx';
 import Dashboard from './components/Dashboard.jsx';
-import Container from '@mui/material/Container';
-
+import MainContent from './components/MainContent.jsx';
 
 export default function App() {
   return (
-
-    <Layout>
-      <Dashboard />
-    </Layout>
-
+    <Dashboard />
   );
 }
