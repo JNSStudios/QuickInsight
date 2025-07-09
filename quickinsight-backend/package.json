@@ -15,7 +15,10 @@
     "cross-env": "^7.0.3"
   },
   "dependencies": {
+    "@google-analytics/data": "^5.1.0",
+    "date-fns": "^4.1.0",
     "dotenv": "^17.1.0",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "stripe": "^18.3.0"
   }
 }
