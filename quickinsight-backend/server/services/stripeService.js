@@ -1,5 +1,5 @@
 import { USE_MOCK, loadJson, toDollars } from "./utilities.js";
-import { fromUnixTime, formatISO } from "date-fns";
+import { fromUnixTime, formatISO, subMonths, subYears, endOfDay, startOfMonth } from "date-fns";
 import Stripe from "stripe";
 
 
@@ -7,22 +7,22 @@ import Stripe from "stripe";
 
 // returns a summary of Stripe activity (either mock or live depending on USE_MOCK)
 export async function getStripeSummary(options = {}) {
-  return USE_MOCK ? mock.getSummary() : live.getSummary(options);
+  return USE_MOCK ? mock.getSummary(options) : live.getSummary(options);
 }
 
 // calculates and returns the refund rate (either mock or live depending on USE_MOCK)
 export async function getRefundRate(options = {}) {
-  return USE_MOCK ? mock.getRefundRate() : live.getRefundRate(options);
+  return USE_MOCK ? mock.getRefundRate(options) : live.getRefundRate(options);
 }
 
 // returns a time series of daily revenue and orders (either mock or live depending on USE_MOCK)
 export async function getTimeSeries(options = {}) {
-  return USE_MOCK ? mock.getTimeSeries() : live.getTimeSeries(options);
+  return USE_MOCK ? mock.getTimeSeries(options) : live.getTimeSeries(options);
 }
 
 // identifies and returns the top-sold item (either mock or live depending on USE_MOCK)
 export async function getTopItem(options = {}) {
-  return USE_MOCK ? mock.getTopItem() : live.getTopItem(options);
+  return USE_MOCK ? mock.getTopItem(options) : live.getTopItem(options);
 }
 
 //--------------------------------------------------------------
@@ -94,16 +94,17 @@ const mock = {
         loadJson("stripe_charges_nov-jan.json"),
         loadJson("stripe_refunds.json"),
       ]);
-      const filteredCharges = charges.data.filter(c => {
-        const day = formatISO(fromUnixTime(c.created), { representation: "date" });
-        return (!start || day >= start) && (!end || day <= end);
-      });
-      const filteredRefunds = refunds.data.filter(r => {
-        const day = formatISO(fromUnixTime(r.created), { representation: "date" });
-        return (!start || day >= start) && (!end || day <= end);
-      });
-      const chargeCount  = filteredCharges.length;
-      const refundCount  = filteredRefunds.length;
+      // Find the earliest and latest charge dates in the mock data
+      const allDates = charges.data.map(c => formatISO(fromUnixTime(c.created), { representation: "date" }));
+      const minDate = allDates.sort()[0];
+      const maxDate = allDates.sort().slice(-1)[0];
+      // Calculate the number of days in the requested range and in the mock data
+      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
+      const mockDays = Math.max(1, Math.round((new Date(maxDate) - new Date(minDate)) / (24 * 60 * 60 * 1000)) + 1);
+      const scale = Math.min(1, rangeDays / mockDays);
+      // Scale the charge and refund counts by the date range
+      const chargeCount  = Math.round(charges.data.length * scale);
+      const refundCount  = Math.round(refunds.data.length * scale);
       const rate         = chargeCount > 0 ? +(refundCount / chargeCount * 100).toFixed(2) : 0;
       return { refundCount, chargeCount, rate };
     } catch (err) {
@@ -288,19 +289,31 @@ function filterByDateRangeStripe(data, startDate, endDate) {
   return data.filter(row => row.date >= startDate && row.date <= endDate);
 }
 // Helper: parse rolling window
-function getRollingWindowDatesStripe(period) {
-  const today = new Date();
-  let days;
+function getRollingWindowDatesStripe(period, todayOverride) {
+  // Use todayOverride for mock mode, otherwise use endOfDay(new Date())
+  const today = todayOverride ? endOfDay(todayOverride) : endOfDay(new Date());
+  let start;
   switch (period) {
-    case "1m": days = 30; break;
-    case "3m": days = 90; break;
-    case "6m": days = 180; break;
-    case "12m": days = 365; break;
-    default: days = 30;
+    case "1":
+      start = startOfMonth(subMonths(today, 0));
+      break;
+    case "3":
+      start = startOfMonth(subMonths(today, 2));
+      break;
+    case "6":
+      start = startOfMonth(subMonths(today, 5));
+      break;
+    case "12":
+      start = startOfMonth(subMonths(today, 11));
+      break;
+    default:
+      start = startOfMonth(subMonths(today, 0));
+      break;
   }
-  const end = getTodayISO();
-  const start = formatISO(new Date(today.getTime() - (days - 1) * 24 * 60 * 60 * 1000), { representation: "date" });
-  return { start, end };
+  today.setHours(23,59,59,999);
+  const startISO = formatISO(start, { representation: "date" });
+  const endISO = formatISO(today, { representation: "date" });
+  return { start: startISO, end: endISO };
 }
 
 // helper functions

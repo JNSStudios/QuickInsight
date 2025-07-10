@@ -1,5 +1,6 @@
 import express from "express";
 import { getRefundRate } from "../services/stripeService.js";
+import { requireDateRange } from "./requireDateRange.js";
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ const router = express.Router();
  * GET /refund-rate
  * Returns { refundRatePct: 1.37 }
  */
-router.get("/", async (req, res, next) => {
+router.get("/", requireDateRange, async (req, res, next) => {
   try {
     const { startDate, endDate, rollingWindow, period } = req.query;
     const data = await getRefundRate({ startDate, endDate, rollingWindow: rollingWindow === 'true', period });

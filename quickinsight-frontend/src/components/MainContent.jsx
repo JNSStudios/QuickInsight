@@ -6,6 +6,7 @@ import ChangesOverTime from './ChangesOverTime';
 import TrafficSources from './TrafficSources';
 import InfoIcon from '@mui/icons-material/Info';
 import { IconButton, Tooltip } from '@mui/material';
+import './styles.css';
 
 const kpis = [
   { title: 'Total visitors',           value: '22,251', subValue: '+4%'   , invertColors: false  },
@@ -20,18 +21,18 @@ export default function MainContent() {
       <Grid container spacing={2} justifyContent="center">
         {/* First 4 - KPI Cards, mapped like above*/}
         {kpis.map((kpi, index) => (
-          <Card variant="outlined" key={index} sx={{ width: '23.5%', height: '100px', p: 2 }}>
+          <Card variant="outlined" key={index} className="card-dashboard">
             <Typography variant="body2" color="text.secondary" gutterBottom>
               <b>{kpi.title}</b>
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
-              <Typography variant="h4" component="div" sx={{ fontWeight: 'bold' }}>
+            <Box style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+              <Typography variant="h4" component="div" style={{ fontWeight: 'bold' }}>
                 {kpi.value}
               </Typography>
               {kpi.subValue && (
                 <Typography 
                   variant="h5" 
-                  sx={{ 
+                  style={{ 
                     color: (kpi.subValue.startsWith('+') || kpi.subValue.startsWith('-')) 
                       ? (() => {
                           const isPositive = kpi.subValue.startsWith('+');
@@ -57,10 +58,8 @@ export default function MainContent() {
         ))}
 
         {/* Row 2: three cards */}
-
-        {/* Change over time card */}
-        <Card variant="outlined" sx={{ width: '30%', height: '350px', p: 2 }}>
-          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+        <Card variant="outlined" className="card-row">
+          <Typography variant="h5" component="div" style={{ fontWeight: 'bold' }}>
             Change Over Time
           </Typography>
 
@@ -70,10 +69,8 @@ export default function MainContent() {
         </Card>
 
 
-        {/* Traffic Sources card */}
-        
-        <Card variant="outlined" sx={{ width: '30%', height: '350px', p: 2 }}>
-          <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
+        <Card variant="outlined" className="card-row">
+          <Typography variant="h5" component="div" style={{ fontWeight: 'bold' }}>
             Traffic Sources
           </Typography>
 
@@ -82,40 +79,15 @@ export default function MainContent() {
         </Card>
 
 
-        {/* AI Briefing card */}
-        <Card variant="outlined" sx={{ width: '35%', height: '350px', p: 2, display: 'flex', flexDirection: 'column' }}>
-          <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', textAlign: 'center'}}>
+        <Card variant="outlined" className="card-brief">
+          <Typography variant="h4" component="div" style={{ fontWeight: 'bold', textAlign: 'center'}}>
             AI Brief
           </Typography>
-          <Box
-            sx={{
-              height: '3px',
-              background: 'linear-gradient(90deg,rgb(12, 15, 35) 0%, rgb(34, 41, 98) 25%, rgb(133, 247, 255) 50%,rgb(34, 41, 98) 75%, rgb(12, 15, 35) 100%)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientShift 3s ease-in-out infinite, shadowShift 3s ease-in-out infinite',
-              margin: '16px 0',
-              '@keyframes gradientShift': {
-                '0%, 100%': {
-                  backgroundPosition: '0% 50%'
-                },
-                '50%': {
-                  backgroundPosition: '100% 50%'
-                }
-              },
-              '@keyframes shadowShift': {
-                '0%, 100%': {
-                  boxShadow: '0 0 8px rgba(102, 126, 234, 1.0)'
-                },
-                '50%': {
-                  boxShadow: '0 0 8px rgba(118, 75, 162, 1.0)'
-                }
-              }
-            }}
-          />
+          <div className="ai-brief-gradient" />
 
           <p>Placeholder for AI Brief</p>
 
-          <Box sx={{ mt: 'auto' }}>
+          <Box style={{ marginTop: 'auto' }}>
             <hr style={{ color: '#333'}} />
 
             <p style={{ fontWeight: 'bold', textAlign: 'center', color: 'GrayText'}}>
@@ -125,17 +97,13 @@ export default function MainContent() {
 
         </Card>
 
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%', justifyContent: 'center', mt: 3}}>
+        <Box className="maincontent-footer">
           <Typography variant="body1">© JNS 2025. For demonstration purposes only.</Typography>
           
           <Tooltip title="More Info">
             <IconButton 
               size="small"
-              sx={{
-                width: 32,
-                height: 32,
-                borderRadius: '50%'
-              }}
+              style={{ width: 32, height: 32, borderRadius: '50%' }}
             >
               <InfoIcon />
             </IconButton>

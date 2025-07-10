@@ -1,5 +1,6 @@
 import express from "express";
 import { getStripeSummary } from "../services/stripeService.js";
+import { requireDateRange } from "./requireDateRange.js";
 
 const router = express.Router();
 
@@ -7,7 +8,7 @@ const router = express.Router();
  * GET /revenue-and-purchases
  * Returns { revenue: 1259.27, purchases: 73 }
  */
-router.get("/", async (req, res, next) => {
+router.get("/", requireDateRange, async (req, res, next) => {
   try {
     const { startDate, endDate, rollingWindow, period } = req.query;
     const data = await getStripeSummary({ startDate, endDate, rollingWindow: rollingWindow === 'true', period });

@@ -1,5 +1,5 @@
 import { USE_MOCK, loadJson } from "./utilities.js";
-import { formatISO, parse } from "date-fns";
+import { formatISO, parse, subMonths, subYears, endOfDay, startOfMonth } from "date-fns";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 
 
@@ -31,40 +31,30 @@ const mock = {
   async getSummary(options = {}) {
     try {
       const { startDate, endDate, rollingWindow, period } = options || {};
-      // console.log("Mock getSummary options:", options);
       const ts = await loadJson("ga4_runReport_timeSeries.json");
       // Find the last date in the mock data
       const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       // Use lastDate as 'today' for mock calculations
-      let today = lastDate;
       let start, end;
-      if (period) {
-        // Use period to compute days
-        let days;
-        switch (period) {
-          case "1m": days = 30; break;
-          case "3m": days = 90; break;
-          case "6m": days = 180; break;
-          case "12m": days = 365; break;
-          default: days = 30;
-        }
-        end = today;
-        start = new Date(today.getTime() - (days - 1) * 24 * 60 * 60 * 1000);
+      if (period || rollingWindow) {
+        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
       } else {
-        console.log("No rolling window, using explicit dates or last 90 days");
-        const maxStart = new Date(today.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
+        const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
         start = startDate ? new Date(startDate) : maxStart;
-        end = endDate ? new Date(endDate) : today;
+        end = endDate ? new Date(endDate) : lastDate;
         if (start < maxStart) start = maxStart;
-        if (end > today) end = today;
+        if (end > lastDate) end = lastDate;
+        start = formatISO(start, { representation: "date" });
+        end = formatISO(end, { representation: "date" });
       }
       // Filter rows by date
       const filteredRows = ts.rows.filter(r => {
         if (!r.dimensionValues || r.dimensionValues.length === 0) return false;
         const d = parse(r.dimensionValues[0].value, "yyyyMMdd", new Date());
-        return d >= start && d <= end;
+        const dISO = formatISO(d, { representation: "date" });
+        return dISO >= start && dISO <= end;
       });
       let visitors = 0, purchases = 0;
       filteredRows.forEach(r => {
@@ -82,37 +72,26 @@ const mock = {
 
   async getTrafficSources(options = {}) {
     try {
-      // Support date filtering for up to 3 months (90 days)
       const { startDate, endDate, rollingWindow, period } = options || {};
-      // Load time series and traffic sources
       const ts = await loadJson("ga4_runReport_timeSeries.json");
       const raw = await loadJson("ga4_runReport_trafficSources.json");
-      // Find the last date in the mock data
       const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
-      let today = lastDate;
       let start, end;
-      if (period) {
-        let days;
-        switch (period) {
-          case "1m": days = 30; break;
-          case "3m": days = 90; break;
-          case "6m": days = 180; break;
-          case "12m": days = 365; break;
-          default: days = 30;
-        }
-        end = today;
-        start = new Date(today.getTime() - (days - 1) * 24 * 60 * 60 * 1000);
+      if (period || rollingWindow) {
+        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
       } else {
-        const maxStart = new Date(today.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
+        const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
         start = startDate ? new Date(startDate) : maxStart;
-        end = endDate ? new Date(endDate) : today;
+        end = endDate ? new Date(endDate) : lastDate;
         if (start < maxStart) start = maxStart;
-        if (end > today) end = today;
+        if (end > lastDate) end = lastDate;
+        start = formatISO(start, { representation: "date" });
+        end = formatISO(end, { representation: "date" });
       }
       // Simulate per-date aggregation by scaling users/purchases by the date range
-      const rangeDays = Math.max(1, Math.round((end - start) / (24 * 60 * 60 * 1000)) + 1);
+      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
       const scale = Math.min(1, rangeDays / 90); // 90 days is the full mock period
       return raw.rows.map(r => ({
         source:     r.dimensionValues[0].value,
@@ -127,37 +106,29 @@ const mock = {
 
   async getTimeSeries(options = {}) {
     try {
-      const { startDate, endDate, period } = options || {};
+      const { startDate, endDate, rollingWindow, period } = options || {};
       const ts = await loadJson("ga4_runReport_timeSeries.json");
-      // Find the last date in the mock data
       const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
-      let today = lastDate;
       let start, end;
-      if (period) {
-        let days;
-        switch (period) {
-          case "1m": days = 30; break;
-          case "3m": days = 90; break;
-          case "6m": days = 180; break;
-          case "12m": days = 365; break;
-          default: days = 30;
-        }
-        end = today;
-        start = new Date(today.getTime() - (days - 1) * 24 * 60 * 60 * 1000);
+      if (period || rollingWindow) {
+        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
       } else {
-        const maxStart = new Date(today.getTime() - 89 * 24 * 60 * 60 * 1000);
+        const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000);
         start = startDate ? new Date(startDate) : maxStart;
-        end = endDate ? new Date(endDate) : today;
+        end = endDate ? new Date(endDate) : lastDate;
         if (start < maxStart) start = maxStart;
-        if (end > today) end = today;
+        if (end > lastDate) end = lastDate;
+        start = formatISO(start, { representation: "date" });
+        end = formatISO(end, { representation: "date" });
       }
       return ts.rows
         .filter(r => {
           if (!r.dimensionValues || r.dimensionValues.length === 0 || r.metricValues.length < 3) return false;
           const d = parse(r.dimensionValues[0].value, "yyyyMMdd", new Date());
-          return d >= start && d <= end;
+          const dISO = formatISO(d, { representation: "date" });
+          return dISO >= start && dISO <= end;
         })
         .map(r => {
           const day = parse(r.dimensionValues[0].value, "yyyyMMdd", new Date());
@@ -177,42 +148,25 @@ const mock = {
 
   async getTopItems(limit = 10, options = {}) {
     try {
-      const { startDate, endDate, period } = options || {};
+      const { startDate, endDate, rollingWindow, period } = options || {};
       const ts = await loadJson("ga4_runReport_timeSeries.json");
       const raw = await loadJson("ga4_runReport_topItems.json");
-      // Find the last date in the mock data
       const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
-      let today = lastDate;
       let start, end;
-      if (period) {
-        let days;
-        switch (period) {
-          case "1m": days = 30; break;
-          case "3m": days = 90; break;
-          case "6m": days = 180; break;
-          case "12m": days = 365; break;
-          default: days = 30;
-        }
-        end = today;
-        start = new Date(today.getTime() - (days - 1) * 24 * 60 * 60 * 1000);
+      if (period || rollingWindow) {
+        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
       } else {
-        const maxStart = new Date(today.getTime() - 89 * 24 * 60 * 60 * 1000);
+        const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000);
         start = startDate ? new Date(startDate) : maxStart;
-        end = endDate ? new Date(endDate) : today;
+        end = endDate ? new Date(endDate) : lastDate;
         if (start < maxStart) start = maxStart;
-        if (end > today) end = today;
+        if (end > lastDate) end = lastDate;
+        start = formatISO(start, { representation: "date" });
+        end = formatISO(end, { representation: "date" });
       }
-      // If your top items mock has per-date data, filter and aggregate here.
-      // For now, simulate per-date aggregation using the time series data if possible.
-      // We'll use the topItems mock as a static list of possible items, and randomly assign sales to dates in the range.
-      // But if you want more realism, you need per-date item sales in the mock.
-      // Here, we'll just return the top N from the static mock, but scaled by the number of days in the range.
-      // ---
-      // If you want to simulate different results, shuffle or scale quantities by the date range length.
-      // For now, let's scale the quantity and revenue by the fraction of the date range to 90 days (mock max).
-      const rangeDays = Math.max(1, Math.round((end - start) / (24 * 60 * 60 * 1000)) + 1);
+      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
       const scale = Math.min(1, rangeDays / 90); // 90 days is the full mock period
       return raw.rows.slice(0, limit).map(r => ({
         name: r.dimensionValues[0].value,
@@ -338,17 +292,29 @@ function filterByDateRange(data, startDate, endDate) {
 }
 
 // Helper: parse rolling window
-function getRollingWindowDates(period) {
-  const today = new Date();
-  let days;
+function getRollingWindowDates(period, todayOverride) {
+  // Use todayOverride for mock mode, otherwise use endOfDay(new Date())
+  const today = todayOverride ? endOfDay(todayOverride) : endOfDay(new Date());
+  let start;
   switch (period) {
-    case "1m": days = 30; break;
-    case "3m": days = 90; break;
-    case "6m": days = 180; break;
-    case "12m": days = 365; break;
-    default: days = 30;
+    case "1":
+      start = startOfMonth(subMonths(today, 0)); // start of current month
+      break;
+    case "3":
+      start = startOfMonth(subMonths(today, 2)); // start of month 3 months ago
+      break;
+    case "6":
+      start = startOfMonth(subMonths(today, 5)); // start of month 6 months ago
+      break;
+    case "12":
+      start = startOfMonth(subMonths(today, 11)); // start of month 12 months ago
+      break;
+    default:
+      start = startOfMonth(subMonths(today, 0));
+      break;
   }
-  const end = formatISO(today, { representation: "date" });
-  const start = getDateNDaysAgo(days - 1);
-  return { start, end };
+  today.setHours(23,59,59,999);
+  const startISO = formatISO(start, { representation: "date" });
+  const endISO = formatISO(today, { representation: "date" });
+  return { start: startISO, end: endISO };
 }

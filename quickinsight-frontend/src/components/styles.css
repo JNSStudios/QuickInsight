@@ -1,0 +1,146 @@
+/* Card styles */
+.card-full {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.card-kpi {
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+.card-kpi-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  padding-bottom: 16px;
+}
+.card-dashboard {
+  width: 23.5%;
+  height: 100px;
+  padding: 16px;
+}
+.card-row {
+  width: 30%;
+  height: 350px;
+  padding: 16px;
+}
+.card-brief {
+  width: 35%;
+  height: 350px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography styles */
+.kpi-title {
+  font-size: 0.875rem;
+  margin-bottom: 0.35em;
+}
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.kpi-subvalue {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.kpi-change {
+  font-size: 1rem;
+}
+.kpi-change.negative {
+  color: #d32f2f;
+}
+.kpi-change.positive {
+  color: #2e7d32;
+}
+
+/* TopBar styles */
+.topbar-img {
+  margin-right: 12px;
+  border-radius: 100px;
+  border: 3px solid Chartreuse;
+  height: 32px;
+}
+.topbar-avatar {
+  margin-left: 24px;
+}
+
+/* MainContent styles */
+.maincontent-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* AI Brief gradient bar */
+.ai-brief-gradient {
+  height: 3px;
+  margin: 16px 0;
+  background: linear-gradient(90deg,rgb(12, 15, 35) 0%, rgb(34, 41, 98) 25%, rgb(133, 247, 255) 50%,rgb(34, 41, 98) 75%, rgb(12, 15, 35) 100%);
+  background-size: 200% 100%;
+  animation: gradientShift 3s ease-in-out infinite, shadowShift 3s ease-in-out infinite;
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes shadowShift {
+  0%, 100% { box-shadow: 0 0 8px rgba(102, 126, 234, 1.0); }
+  50% { box-shadow: 0 0 8px rgba(118, 75, 162, 1.0); }
+}
+
+/* Chart placeholders */
+.chart-placeholder {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  min-height: 400px;
+}
+
+/* Dashboard main box */
+.dashboard-main {
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  width: 100vw;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.dashboard-header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dashboard-btn-group {
+  display: flex;
+  gap: 16px;
+}
+
+/* Utility */
+.text-green {
+  color: green;
+}
+.text-red {
+  color: red;
+}
+.text-center {
+  text-align: center;
+}
+.text-bold {
+  font-weight: bold;
+}

@@ -1,9 +1,10 @@
 import express from "express";
 import { getGaSummary } from "../services/gaService.js";
+import { requireDateRange } from "./requireDateRange.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
+router.get("/", requireDateRange, async (req, res, next) => {
   try {
     const { startDate, endDate, rollingWindow, period } = req.query;
     const options = {
