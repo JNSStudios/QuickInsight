@@ -6,10 +6,14 @@ import refundRateRouter from './routes/refundRate.js';
 import changesOverTimeRouter from './routes/changesOverTime.js';
 import visitorsRouter from './routes/visitors.js';
 
+import cors from 'cors';
+
 const app = express()
 const port = 3000
 
 // Mount API routes
+app.use(cors());
+
 app.use('/api/traffic-sources', trafficSourcesRouter);              // passes 1m, 1m+r, 3m, and 3m+r. 
 app.use('/api/top-item', topItemRouter);                            // passes 1m, 1m+r, 3m, and 3m+r.
 app.use('/api/revenue-and-purchases', revenueAndPurchasesRouter);   // passes 1m, 1m+r, 3m, and 3m+r.

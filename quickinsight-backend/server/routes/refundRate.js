@@ -1,5 +1,5 @@
 import express from "express";
-import { getRefundRate } from "../services/stripeService.js";
+import { getRefundRate, getRefundRateChange } from "../services/stripeService.js";
 import { requireDateRange } from "./requireDateRange.js";
 
 const router = express.Router();
@@ -19,3 +19,15 @@ router.get("/", requireDateRange, async (req, res, next) => {
 });
 
 export default router;
+
+// GET /refund-rate-change
+// Returns { current, previous, percentChange }
+router.get("/change", requireDateRange, async (req, res, next) => {
+  try {
+    const { startDate, endDate, period } = req.query;
+    const data = await getRefundRateChange({ startDate, endDate, period });
+    res.json({ ok: true, data });
+  } catch (err) {
+    next(err);
+  }
+});

@@ -1,3 +1,11 @@
+// Returns the number of visitors for the latest day in the available data
+export async function getLatestDayVisitors(options = {}) {
+  // Use the same logic as getTimeSeries to get the latest day
+  const timeSeries = await (USE_MOCK ? mock.getTimeSeries(options) : live.getTimeSeries(options));
+  if (!timeSeries || timeSeries.length === 0) return { visitors: 0 };
+  const latest = timeSeries[timeSeries.length - 1];
+  return { visitors: latest.users };
+}
 import { USE_MOCK, loadJson } from "./utilities.js";
 import { formatISO, parse, subMonths, subYears, endOfDay, startOfMonth } from "date-fns";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";

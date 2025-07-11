@@ -1,3 +1,68 @@
+// Returns refund rate percent change for a period vs previous period
+export async function getRefundRateChange(options = {}) {
+  // options: { startDate, endDate, period }
+  // Calculate previous period
+  let { startDate, endDate, period } = options;
+  if (!startDate || !endDate) {
+    // fallback to period logic (like getRefundRate)
+    const { start, end } = await mock.getDateRange(options);
+    startDate = start;
+    endDate = end;
+  }
+  // Parse dates
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  // Calculate previous period
+  let prevStart, prevEnd;
+  const days = Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
+  prevEnd = new Date(start);
+  prevEnd.setDate(prevEnd.getDate() - 1);
+  prevStart = new Date(prevEnd);
+  prevStart.setDate(prevStart.getDate() - (days - 1));
+  const prevStartISO = prevStart.toISOString().slice(0, 10);
+  const prevEndISO = prevEnd.toISOString().slice(0, 10);
+  // Get current and previous refund rates
+  let [current, previous] = await Promise.all([
+    getRefundRate({ startDate, endDate }),
+    getRefundRate({ startDate: prevStartISO, endDate: prevEndISO })
+  ]);
+  let currentRate = current.rate ?? 0;
+  let prevRate = previous.rate ?? 0;
+
+  // If previous is 0, null, or missing, try reducing window by 1 day (once)
+  // Use a flag to avoid infinite recursion
+  if ((prevRate === 0 || prevRate === null || prevRate === undefined) && !options._alreadyReduced) {
+    let prevEnd2 = new Date(prevEnd);
+    prevEnd2.setDate(prevEnd2.getDate() - 1);
+    let prevStart2 = new Date(prevStart);
+    prevStart2.setDate(prevStart2.getDate() - 1);
+    const prevStartISO2 = prevStart2.toISOString().slice(0, 10);
+    const prevEndISO2 = prevEnd2.toISOString().slice(0, 10);
+    // Set a flag to avoid infinite recursion
+    const previous2Result = await getRefundRateChange({
+      startDate,
+      endDate,
+      period,
+      _alreadyReduced: true,
+      _prevStart: prevStartISO2,
+      _prevEnd: prevEndISO2
+    });
+    // If the retried previous is > 0, use it
+    if (previous2Result && typeof previous2Result.previous === 'number' && previous2Result.previous > 0) {
+      prevRate = previous2Result.previous;
+    }
+  }
+
+  let percentChange = null;
+  if (prevRate > 0) {
+    percentChange = ((currentRate - prevRate) / Math.abs(prevRate)) * 100;
+  }
+  return {
+    current: currentRate,
+    previous: prevRate,
+    percentChange
+  };
+}
 import { USE_MOCK, loadJson, toDollars } from "./utilities.js";
 import { fromUnixTime, formatISO, subMonths, subYears, endOfDay, startOfMonth } from "date-fns";
 import Stripe from "stripe";
@@ -44,10 +109,10 @@ const mock = {
     if (period) {
       let days;
       switch (period) {
-        case "1m": days = 30; break;
-        case "3m": days = 90; break;
-        case "6m": days = 180; break;
-        case "12m": days = 365; break;
+        case "1": days = 30; break;
+        case "3": days = 90; break;
+        case "6": days = 180; break;
+        case "12": days = 365; break;
         default: days = 30;
       }
       end = today;
@@ -94,18 +159,18 @@ const mock = {
         loadJson("stripe_charges_nov-jan.json"),
         loadJson("stripe_refunds.json"),
       ]);
-      // Find the earliest and latest charge dates in the mock data
-      const allDates = charges.data.map(c => formatISO(fromUnixTime(c.created), { representation: "date" }));
-      const minDate = allDates.sort()[0];
-      const maxDate = allDates.sort().slice(-1)[0];
-      // Calculate the number of days in the requested range and in the mock data
-      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
-      const mockDays = Math.max(1, Math.round((new Date(maxDate) - new Date(minDate)) / (24 * 60 * 60 * 1000)) + 1);
-      const scale = Math.min(1, rangeDays / mockDays);
-      // Scale the charge and refund counts by the date range
-      const chargeCount  = Math.round(charges.data.length * scale);
-      const refundCount  = Math.round(refunds.data.length * scale);
-      const rate         = chargeCount > 0 ? +(refundCount / chargeCount * 100).toFixed(2) : 0;
+      // Filter charges and refunds by date range
+      const filteredCharges = charges.data.filter(c => {
+        const day = formatISO(fromUnixTime(c.created), { representation: "date" });
+        return (!start || day >= start) && (!end || day <= end);
+      });
+      const filteredRefunds = refunds.data.filter(r => {
+        const day = formatISO(fromUnixTime(r.created), { representation: "date" });
+        return (!start || day >= start) && (!end || day <= end);
+      });
+      const chargeCount = filteredCharges.length;
+      const refundCount = filteredRefunds.length;
+      const rate = chargeCount > 0 ? +(refundCount / chargeCount * 100).toFixed(2) : 0;
       return { refundCount, chargeCount, rate };
     } catch (err) {
       console.error("Mock data error:", err);
