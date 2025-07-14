@@ -1,3 +1,72 @@
+/* ChangesOverTime component styles */
+.changes-over-time-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.graph-btn-group {
+  display: flex;
+  width: 100%;
+  margin: 0 auto 10px auto;
+}
+
+.toggle-btn {
+  border-radius: 100px !important;
+  text-transform: none;
+  padding: 2px 16px;
+  font-weight: 100;
+  font-size: 0.9rem;
+  color: #fff !important;
+  margin: 4px !important;
+  border-width: 1.5px;
+  min-height: 32px;
+  height: 32px;
+  line-height: 28px;
+}
+
+.revenue-btn {
+  background-color: #482000ff !important;
+  border-color: #ff4500 !important;
+}
+.revenue-btn.selected,
+.revenue-btn.Mui-selected {
+  background-color: #ff4500 !important;
+  color: #fff !important;
+}
+.revenue-btn:hover {
+  background-color: #ff4500 !important;
+  color: #fff !important;
+}
+
+.purchases-btn {
+  background-color: #004a1cff !important;
+  border-color: #4caf50 !important;
+}
+.purchases-btn.selected,
+.purchases-btn.Mui-selected {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+.purchases-btn:hover {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+}
+
+.users-btn {
+  background-color: #060053ff !important;
+  border-color: #007fb5ff !important;
+}
+.users-btn.selected,
+.users-btn.Mui-selected {
+  background-color: #007fb5ff !important;
+  color: #fff !important;
+}
+.users-btn:hover {
+  background-color: #007fb5ff !important;
+  color: #fff !important;
+}
+
 /* Card styles */
 .card-full {
   width: 100%;

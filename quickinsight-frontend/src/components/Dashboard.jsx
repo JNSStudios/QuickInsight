@@ -23,21 +23,29 @@ export default function Dashboard() {
   ];
 
   const [maxDataRange, setMaxDataRange] = useState(3);
-  const [viewingDataRange, setViewingDataRange] = useState(maxDataRange); // Will be corrected by useEffect
+  const [viewingDataRange, setViewingDataRange] = useState(maxDataRange); // start with max available
   const [kpis, setKpis] = useState([]);
+  const [changesData, setChangesData] = useState([]);
 
   const isMock = true; // Set to false when using real data
+  const overrideWithTestData = false;
   const apiEndpoint = isMock ? "http://localhost:3000/api/" : "OTHER GOES HERE";
 
   const testKPIs = [
-    { title: 'Total visitors', value: '22,251', subValue: '+4%', invertColors: false },
-    { title: 'Total revenue & purchases', value: '$6,234', subValue: '792' , invertColors: false },
+    { title: 'Total visitors', subtitle: 'Today\'s visitors', value: '22,251', subValue: '+4%', invertColors: false },
+    { title: 'Total revenue', subtitle: 'Total purchases', value: '$6,234', subValue: '792' , invertColors: false },
     { title: 'Top item sold', value: 'Zip Hoodie', invertColors: false },
-    { title: 'Refund Rate', value: '0.32%', subValue: '-1.1%', invertColors: true },
+    { title: 'Refund Rate', subtitle: 'Change Over Time', value: '0.32%', subValue: '-1.1%', invertColors: true },
   ];
 
   useEffect(() => {
     const fetchKPIs = async () => {
+      // If debugging, use test data immediately
+      if (overrideWithTestData) {
+        setKpis(testKPIs);
+        return;
+      }
+
       try {
         const params = new URLSearchParams({
           period: viewingDataRange.toString()
@@ -73,9 +81,14 @@ export default function Dashboard() {
           const previous = refundChangeData.data?.previous;
           let sign = '';
           if (typeof current === 'number' && typeof previous === 'number') {
-            if (current > previous) sign = '+';
-            else if (current < previous) sign = '-';
-            else sign = '';
+            
+            if (current > previous) 
+              sign = '+';
+            else if (current < previous) 
+              sign = '-';
+            else 
+              sign = '';
+
           } else {
             sign = '';
           }
@@ -85,13 +98,15 @@ export default function Dashboard() {
         // Transform API data to KPI format
         const kpiData = [
           { 
-            title: 'Total Visitors / Today\'s Visitors', 
+            title: 'Total Visitors', 
+            subtitle: 'Today\'s Visitors',
             value: visitorsData.value?.toLocaleString() || '0', 
             subValue: visitorsTodayData.value?.toLocaleString() || '0',
             invertColors: false 
           },
           { 
-            title: 'Total revenue / purchases', 
+            title: 'Total revenue',
+            subtitle: 'Total purchases', 
             value: `$${(revenueData.data?.gross ?? 0).toLocaleString()}`,
             subValue: revenueData.data?.orders?.toString() || '0',
             invertColors: false 
@@ -102,7 +117,8 @@ export default function Dashboard() {
             invertColors: false 
           },
           { 
-            title: 'Refund Rate / Change Over Time', 
+            title: 'Refund Rate', 
+            subtitle: 'Change Over Time',
             value: `${(refundData.data?.rate ?? 0).toFixed(2)}%`,
             subValue: refundChange,
             invertColors: true 
@@ -125,6 +141,29 @@ export default function Dashboard() {
     const highestAvailable = Math.max(...availableRanges.map(r => r.value));
     setViewingDataRange(highestAvailable);
   }, [maxDataRange]);
+
+  // get changes data for ChangesOverTime component, based on the viewingDataRange
+  useEffect(() => { 
+    const fetchChanges = async () => {
+      try {
+        // set up the URL parameters for the API call
+        const params = new URLSearchParams({
+          period: viewingDataRange.toString()
+        });
+
+        // Fetch the changesOverTime data for current period
+        const changesResponse = await fetch(`${apiEndpoint}changes-over-time?${params}`);
+
+        const data = await changesResponse.json();
+
+        setChangesData(data.data);
+
+      } catch (err) {
+        console.log('Failed to fetch Changes over Time.', err);
+      }   
+    }
+    fetchChanges();
+  }, [apiEndpoint, viewingDataRange]);
 
   const handleMaxDataRangeChange = (event, newRange) => {
     if (newRange !== null) setMaxDataRange(Number(newRange));
@@ -172,7 +211,7 @@ export default function Dashboard() {
               const button = <ToggleButton value={value} disabled={disabled} key={value}>{label}</ToggleButton>;
               
               return disabled ? (
-                <Tooltip title={`Need at least ${label.toLowerCase()} of data`} arrow disableInteractive key={value}>
+                <Tooltip title={`Need at least ${value} month${value != 1 ? 's' : ''} of data`} arrow disableInteractive key={value}>
                   <span>{button}</span>
                 </Tooltip>
               ) : button;
@@ -192,7 +231,7 @@ export default function Dashboard() {
               Change Over Time
             </Typography>
 
-            <p>Placeholder for graph</p>
+            <ChangesOverTime data={changesData} /* TODO replace with actual data from this file */ />
 
 
           </Card>
