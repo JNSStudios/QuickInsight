@@ -47,7 +47,7 @@ const mock = {
       // Use lastDate as 'today' for mock calculations
       let start, end;
       if (period || rollingWindow) {
-        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
+        ({ start, end } = getRollingWindowDates(period || "1", lastDate));
       } else {
         const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
         start = startDate ? new Date(startDate) : maxStart;
@@ -88,7 +88,7 @@ const mock = {
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       let start, end;
       if (period || rollingWindow) {
-        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
+        ({ start, end } = getRollingWindowDates(period || "1", lastDate));
       } else {
         const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000); // 90 days ago
         start = startDate ? new Date(startDate) : maxStart;
@@ -121,7 +121,7 @@ const mock = {
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       let start, end;
       if (period || rollingWindow) {
-        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
+        ({ start, end } = getRollingWindowDates(period || "1", lastDate));
       } else {
         const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000);
         start = startDate ? new Date(startDate) : maxStart;
@@ -164,7 +164,7 @@ const mock = {
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       let start, end;
       if (period || rollingWindow) {
-        ({ start, end } = getRollingWindowDates(period || "1m", lastDate));
+        ({ start, end } = getRollingWindowDates(period || "1", lastDate));
       } else {
         const maxStart = new Date(lastDate.getTime() - 89 * 24 * 60 * 60 * 1000);
         start = startDate ? new Date(startDate) : maxStart;

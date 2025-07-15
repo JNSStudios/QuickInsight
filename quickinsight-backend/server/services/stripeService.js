@@ -128,6 +128,10 @@ const mock = {
       const { start, end } = await this.getDateRange(options);
       const charges = await loadJson("stripe_charges_nov-jan.json");
       const refunds = await loadJson("stripe_refunds.json");
+      // Find first charge with currency
+      const firstCharge = charges.data.find(c => c.currency);
+      const currency = firstCharge ? firstCharge.currency : 'usd';
+      // Return currency code instead of symbol
       // Find the earliest and latest charge dates in the mock data
       const allDates = charges.data.map(c => formatISO(fromUnixTime(c.created), { representation: "date" }));
       const minDate = allDates.sort()[0];
@@ -145,6 +149,7 @@ const mock = {
         refunded: toDollars(refunded),
         net:      toDollars(gross - refunded),
         orders,
+        currency,
       };
     } catch (err) {
       console.error("Mock data error:", err);
@@ -159,6 +164,9 @@ const mock = {
         loadJson("stripe_charges_nov-jan.json"),
         loadJson("stripe_refunds.json"),
       ]);
+      // Find first charge with currency
+      const firstCharge = charges.data.find(c => c.currency);
+      const currency = firstCharge ? firstCharge.currency : 'usd';
       // Filter charges and refunds by date range
       const filteredCharges = charges.data.filter(c => {
         const day = formatISO(fromUnixTime(c.created), { representation: "date" });
@@ -171,7 +179,7 @@ const mock = {
       const chargeCount = filteredCharges.length;
       const refundCount = filteredRefunds.length;
       const rate = chargeCount > 0 ? +(refundCount / chargeCount * 100).toFixed(2) : 0;
-      return { refundCount, chargeCount, rate };
+      return { refundCount, chargeCount, rate, currency };
     } catch (err) {
       console.error("Mock data error:", err);
       throw new Error("Unable to load mock refund data");
@@ -182,6 +190,8 @@ const mock = {
     try {
       const { start, end } = await this.getDateRange(options);
       const charges = await loadJson("stripe_charges_nov-jan.json");
+      const firstCharge = charges.data.find(c => c.currency);
+      const currency = firstCharge ? firstCharge.currency : 'usd';
       const buckets = {};          // key: ISO-date → { revenue, orders }
       for (const c of charges.data) {
         const day = formatISO(fromUnixTime(c.created), { representation: "date" });
@@ -198,6 +208,7 @@ const mock = {
                      date,
                      revenue: toDollars(revenue),
                      orders,
+                     currency,
                    }));
     } catch (err) {
       console.error("Mock data error:", err);
@@ -209,6 +220,9 @@ const mock = {
     try {
       const { start, end } = await this.getDateRange(options);
       const pis = await loadJson("stripe_paymentIntents_items.json");
+      // Find first payment intent with currency
+      const firstPI = pis.data.find(pi => pi.currency);
+      const currency = firstPI ? firstPI.currency : 'usd';
       // SKU count → units sold (filtered by payment intent date)
       const counts = new Map();
       for (const pi of pis.data) {
@@ -219,10 +233,10 @@ const mock = {
           }
         }
       }
-      if (counts.size === 0) return { sku: null, units: 0 };
+      if (counts.size === 0) return { sku: null, units: 0, currency };
       const [sku, units] = [...counts.entries()]
         .sort((a, b) => b[1] - a[1])[0];                   // max by units
-      return { sku, units };                               // "Zip Hoodie", 256
+      return { sku, units, currency };               // "Zip Hoodie", 256
     } catch (err) {
       console.error("Mock data error:", err);
       throw new Error("Unable to load mock top item data");
@@ -303,7 +317,10 @@ const live = {
     const refunded = Object.values(refundBuckets).reduce((sum, amt) => sum + amt, 0) / 100;
     const net = gross - refunded;
     const orders = filtered.reduce((sum, r) => sum + (r.orders || 0), 0);
-    return { gross, refunded, net, orders };
+    // Find first charge with currency
+    const firstCharge = cache.charges.find(c => c.currency);
+    const currency = firstCharge ? firstCharge.currency : 'usd';
+    return { gross, refunded, net, orders, currency };
   },
   async getRefundRate(options = {}) {
     const cache = await fetchAndCacheStripeData();
@@ -323,7 +340,10 @@ const live = {
     const chargeCount = charges.length;
     const refundCount = refunds.length;
     const rate = chargeCount > 0 ? +(refundCount / chargeCount * 100).toFixed(2) : 0;
-    return { refundCount, chargeCount, rate };
+    // Find first charge with currency
+    const firstCharge = cache.charges.find(c => c.currency);
+    const currency = firstCharge ? firstCharge.currency : 'usd';
+    return { refundCount, chargeCount, rate, currency };
   },
   async getTimeSeries(options = {}) {
     const cache = await fetchAndCacheStripeData();
@@ -331,11 +351,17 @@ const live = {
     if (rollingWindow && period) {
       ({ start: startDate, end: endDate } = getRollingWindowDatesStripe(period));
     }
-    return filterByDateRangeStripe(cache.timeSeries, startDate, endDate);
+    // Find first charge with currency
+    const firstCharge = cache.charges.find(c => c.currency);
+    const currency = firstCharge ? firstCharge.currency : 'usd';
+    return filterByDateRangeStripe(cache.timeSeries, startDate, endDate).map(row => ({ ...row, currency }));
   },
   async getTopItem(options = {}) {
     // Not fully implemented: would require fetching line items for each payment intent
-    return { sku: "Live data not fully implemented", units: 0 };
+    // Find first payment intent with currency
+    const firstPI = cache.paymentIntents.find(pi => pi.currency);
+    const currency = firstPI ? firstPI.currency : 'usd';
+    return { sku: "Live data not fully implemented", units: 0, currency };
   },
 };
 

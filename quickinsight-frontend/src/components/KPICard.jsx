@@ -4,47 +4,49 @@ import PropTypes from 'prop-types';
 import { Card, Typography, Box } from '@mui/material';
 import millify from 'millify';
 
+
+
 export default function KPICard({ kpi }) {
-  // Helper to abbreviate numbers using millify if more than 3 digits, preserving $ if present
-  function abbreviateIfLong(value) {
-    if (typeof value === 'number') {
-      const str = value.toString();
+  
+  // Helper to abbreviate numbers using millify if more than 3 digits, preserving prefix/suffix and symbol (symbol is now passed in)
+  function abbreviateIfLong(val) {
+    if (typeof val === 'number') {
+      const str = val.toString();
       if (str.length > 3) {
-        return millify(value, { precision: 1 });
+        return millify(val, { precision: 1 });
       }
       return str;
     }
-    if (typeof value === 'string') {
-      let str = value.trim();
-      // Extract prefix (+/-), $ and suffix (%)
+    if (typeof val === 'string') {
+      let str = val.trim();
+      // Extract prefix (+/-) and suffix (%)
       let prefix = '';
-      let isDollar = false;
       let suffix = '';
-      // Check for + or - at start
       if (str[0] === '+' || str[0] === '-') {
         prefix = str[0];
-        str = str.slice(1);
-      }
-      if (str.startsWith('$')) {
-        isDollar = true;
         str = str.slice(1);
       }
       if (str.endsWith('%')) {
         suffix = '%';
         str = str.slice(0, -1);
       }
-      // Remove commas for parsing
-      let num = parseFloat(str.replace(/,/g, ''));
-      if (!isNaN(num)) {
-        // Only abbreviate if number part is more than 3 digits
-        if (str.replace(/[^0-9]/g, '').length > 3) {
-          return prefix + (isDollar ? '$' : '') + millify(num, { precision: 1 }) + suffix;
+      // Find the first digit in the string
+      const firstDigitIdx = str.search(/[0-9]/);
+      if (firstDigitIdx !== -1) {
+        const symbol = str.slice(0, firstDigitIdx);
+        const numStr = str.slice(firstDigitIdx).replace(/,/g, '');
+        let num = parseFloat(numStr);
+        if (!isNaN(num)) {
+          if (numStr.replace(/[^0-9]/g, '').length > 3) {
+            return prefix + symbol + millify(num, { precision: 1 }) + suffix;
+          }
+          return prefix + symbol + num.toLocaleString() + suffix;
         }
-        // Otherwise, keep original string (with $ and prefix/suffix if present)
-        return prefix + (isDollar ? '$' : '') + num.toLocaleString() + suffix;
       }
+      // Fallback: not a number, just return original string
+      return val;
     }
-    return value;
+    return val;
   }
 
   // For non-numeric text, shrink font if over SMALL_FONT_LEN, truncate if over TRUNCATE_LEN
@@ -60,7 +62,7 @@ export default function KPICard({ kpi }) {
   }
 
   function processText(val) {
-    if (isNumericLike(val)) {
+    if (typeof val === 'number' || (typeof val === 'string' && val.match(/[0-9]/))) {
       return { text: abbreviateIfLong(val), useSmallFont: false };
     }
     let str = typeof val === 'string' ? val : String(val);

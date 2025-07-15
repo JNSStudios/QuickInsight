@@ -4,6 +4,8 @@ import {
   ToggleButton, ToggleButtonGroup
 } from '@mui/material';
 import InfoIcon from '@mui/icons-material/Info';
+import getSymbolFromCurrency from 'currency-symbol-map';
+
 import './styles.css';
 
 import TopBar from './TopBar';
@@ -26,6 +28,7 @@ export default function Dashboard() {
   const [viewingDataRange, setViewingDataRange] = useState(maxDataRange); // start with max available
   const [kpis, setKpis] = useState([]);
   const [changesData, setChangesData] = useState([]);
+  const [currencyCode, setCurrencyCode] = useState('ERR');
 
   const isMock = true; // Set to false when using real data
   const overrideWithTestData = false;
@@ -33,16 +36,20 @@ export default function Dashboard() {
 
   const testKPIs = [
     { title: 'Total visitors', subtitle: 'Today\'s visitors', value: '22,251', subValue: '+4%', invertColors: false },
-    { title: 'Total revenue', subtitle: 'Total purchases', value: '$6,234', subValue: '792' , invertColors: false },
+    { title: 'Total profit', subtitle: 'Total purchases', value: '$6,234', subValue: '792' , invertColors: false },
     { title: 'Top item sold', value: 'Zip Hoodie', invertColors: false },
-    { title: 'Refund Rate', subtitle: 'Change Over Time', value: '0.32%', subValue: '-1.1%', invertColors: true },
+    { title: 'Refund Rate', subtitle: 'Money Refunded', value: '0.32%', subValue: '$2.2k', invertColors: true },
   ];
 
+  const [trafficData, setTrafficData] = useState([]);
+
   useEffect(() => {
-    const fetchKPIs = async () => {
+    const fetchData = async () => {
       // If debugging, use test data immediately
       if (overrideWithTestData) {
         setKpis(testKPIs);
+        setChangesData([]);
+        setTrafficData([]);
         return;
       }
 
@@ -52,12 +59,20 @@ export default function Dashboard() {
         });
 
         // Fetch all KPI data in parallel for current period
-        const [visitorsRes, revenueRes, topItemRes, refundRes, refundChangeRes] = await Promise.all([
+        const [
+          visitorsRes, 
+          revenueRes, 
+          topItemRes, 
+          refundRes, 
+          refundChangeRes,
+          trafficSourcesRes
+        ] = await Promise.all([
           fetch(`${apiEndpoint}visitors?${params}`),
           fetch(`${apiEndpoint}revenue-and-purchases?${params}`),
           fetch(`${apiEndpoint}top-item?${params}`),
           fetch(`${apiEndpoint}refund-rate?${params}`),
-          fetch(`${apiEndpoint}refund-rate/change?${params}`)
+          fetch(`${apiEndpoint}refund-rate/change?${params}`),
+          fetch(`${apiEndpoint}traffic-sources?${params}`)
         ]);
 
         const visitorsData = await visitorsRes.json();
@@ -65,6 +80,7 @@ export default function Dashboard() {
         const topItemData = await topItemRes.json();
         const refundData = await refundRes.json();
         const refundChangeData = await refundChangeRes.json();
+        const trafficSourcesData = await trafficSourcesRes.json();
 
         // Fetch today's visitors (latest day in period)
         const visitorsTodayRes = await fetch(`${apiEndpoint}visitors?latestDay=true&${params}`);
@@ -81,19 +97,22 @@ export default function Dashboard() {
           const previous = refundChangeData.data?.previous;
           let sign = '';
           if (typeof current === 'number' && typeof previous === 'number') {
-            
             if (current > previous) 
               sign = '+';
             else if (current < previous) 
               sign = '-';
             else 
               sign = '';
-
           } else {
             sign = '';
           }
           refundChange = `0.0%`;
         }
+
+        // Set currency code and symbol for use elsewhere
+        let code = revenueData.data?.currency || 'USD';
+        setCurrencyCode(code.toUpperCase());
+        const symbol = getSymbolFromCurrency(code);
 
         // Transform API data to KPI format
         const kpiData = [
@@ -105,9 +124,9 @@ export default function Dashboard() {
             invertColors: false 
           },
           { 
-            title: 'Total revenue',
+            title: `Total profit (${code ? code.toUpperCase() : 'ERR'})`,
             subtitle: 'Total purchases', 
-            value: `$${(revenueData.data?.gross ?? 0).toLocaleString()}`,
+            value: `${symbol || 'ERR'}${(revenueData.data?.net ?? 0).toLocaleString()}`,
             subValue: revenueData.data?.orders?.toString() || '0',
             invertColors: false 
           },
@@ -118,21 +137,40 @@ export default function Dashboard() {
           },
           { 
             title: 'Refund Rate', 
-            subtitle: 'Change Over Time',
+            subtitle: 'Refund Amount',
             value: `${(refundData.data?.rate ?? 0).toFixed(2)}%`,
-            subValue: refundChange,
+            subValue: `${symbol || 'ERR'}${revenueData.data?.refunded?.toString() || '0'}`,
             invertColors: true 
           }
         ];
-
         setKpis(kpiData);
+
+        // Now fetch changes data and attach the correct currency code
+        try {
+          const changesResponse = await fetch(`${apiEndpoint}changes-over-time?${params}`);
+          const changesDataJson = await changesResponse.json();
+          if (changesDataJson.data && Array.isArray(changesDataJson.data) && changesDataJson.data.length > 0) {
+            changesDataJson.data.forEach(item => {
+              item.currencyCode = code.toUpperCase();
+            });
+          }
+          setChangesData(changesDataJson.data);
+        } catch (err) {
+          console.log('Failed to fetch Changes over Time.', err);
+          setChangesData([]);
+        }
+
+        // Set traffic sources data
+        setTrafficData(trafficSourcesData.data || []);
+
       } catch (err) {
         console.log('Failed to fetch KPIs, using test data:', err);
         setKpis(testKPIs);
+        setChangesData([]);
+        setTrafficData([]);
       }
     };
-
-    fetchKPIs();
+    fetchData();
   }, [apiEndpoint, viewingDataRange]);
 
   // Auto-select highest available range when maxDataRange changes
@@ -142,28 +180,7 @@ export default function Dashboard() {
     setViewingDataRange(highestAvailable);
   }, [maxDataRange]);
 
-  // get changes data for ChangesOverTime component, based on the viewingDataRange
-  useEffect(() => { 
-    const fetchChanges = async () => {
-      try {
-        // set up the URL parameters for the API call
-        const params = new URLSearchParams({
-          period: viewingDataRange.toString()
-        });
-
-        // Fetch the changesOverTime data for current period
-        const changesResponse = await fetch(`${apiEndpoint}changes-over-time?${params}`);
-
-        const data = await changesResponse.json();
-
-        setChangesData(data.data);
-
-      } catch (err) {
-        console.log('Failed to fetch Changes over Time.', err);
-      }   
-    }
-    fetchChanges();
-  }, [apiEndpoint, viewingDataRange]);
+  // ...removed separate changes data effect, now handled in main effect above...
 
   const handleMaxDataRangeChange = (event, newRange) => {
     if (newRange !== null) setMaxDataRange(Number(newRange));
@@ -231,8 +248,7 @@ export default function Dashboard() {
               Change Over Time
             </Typography>
 
-            <ChangesOverTime data={changesData} /* TODO replace with actual data from this file */ />
-
+            <ChangesOverTime data={changesData} />
 
           </Card>
 
@@ -242,7 +258,7 @@ export default function Dashboard() {
               Traffic Sources
             </Typography>
 
-            <p>Placeholder for traffic</p>
+            <TrafficSources data={trafficData} />
 
           </Card>
 

@@ -16,6 +16,7 @@
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "cors": "^2.8.5",
+    "currency-symbol-map": "^5.1.0",
     "millify": "^6.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
