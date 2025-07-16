@@ -6,7 +6,7 @@ import { Pie, Cell, PieChart, ResponsiveContainer, Sector, AreaChart, Area, Line
 
 
 // AnimatedNumber: animates a number from previous to next value
-function AnimatedNumber({ value, duration = 800 }) {
+function AnimatedNumber({ value, duration = 400 }) {
   const [displayValue, setDisplayValue] = useState(value);
   const prevValue = useRef(value);
   const raf = useRef();
@@ -86,10 +86,12 @@ export default function TrafficSources({ data }) {
             color: fill || '#fff',
             fontSize: 14,
             textAlign: textAnchor === 'end' ? 'right' : 'left',
+            marginLeft: textAnchor === 'end' ? 0 : 4,
+            marginRight: textAnchor === 'end' ? 4 : 0,
           }}
           title={name}
         >
-          {name}
+          <b>{name}</b>
         </div>
       </foreignObject>
     );
@@ -129,6 +131,7 @@ export default function TrafficSources({ data }) {
             label={renderTruncatedLabel}
             animationDuration={400}
             animationEasing='ease-in-out'
+            animationBegin={true}
           >
             {sortedData.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />

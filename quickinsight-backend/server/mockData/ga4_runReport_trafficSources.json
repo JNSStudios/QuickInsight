@@ -2,6 +2,9 @@
   "kind": "analyticsData#runReport",
   "dimensionHeaders": [
     {
+      "name": "date"
+    },
+    {
       "name": "sessionSource"
     }
   ],
@@ -19,78 +22,8283 @@
     {
       "dimensionValues": [
         {
+          "value": "20201101"
+        },
+        {
           "value": "google"
         }
       ],
       "metricValues": [
         {
-          "value": "117476"
+          "value": "914"
         },
         {
-          "value": "1620"
+          "value": "2"
         }
       ]
     },
     {
       "dimensionValues": [
+        {
+          "value": "20201101"
+        },
         {
           "value": "<Other>"
         }
       ],
       "metricValues": [
         {
-          "value": "90751"
+          "value": "704"
         },
         {
-          "value": "1290"
+          "value": "3"
         }
       ]
     },
     {
       "dimensionValues": [
+        {
+          "value": "20201101"
+        },
         {
           "value": "(direct)"
         }
       ],
       "metricValues": [
         {
-          "value": "75951"
+          "value": "598"
         },
         {
-          "value": "1251"
+          "value": "6"
         }
       ]
     },
     {
       "dimensionValues": [
+        {
+          "value": "20201101"
+        },
         {
           "value": "shop.googlemerchandisestore.com"
         }
       ],
       "metricValues": [
         {
-          "value": "26065"
+          "value": "213"
         },
         {
-          "value": "701"
+          "value": "2"
         }
       ]
     },
     {
       "dimensionValues": [
         {
+          "value": "20201101"
+        },
+        {
           "value": "(data deleted)"
         }
       ],
       "metricValues": [
         {
-          "value": "17951"
+          "value": "126"
         },
         {
-          "value": "830"
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1239"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "985"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "811"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "320"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201102"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "258"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1873"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1363"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1203"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "403"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201103"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "324"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1448"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1140"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "936"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "369"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201104"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "304"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1292"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "918"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "837"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "342"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201105"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "327"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1107"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "792"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "728"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "312"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201106"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "263"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "773"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "582"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "529"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "183"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201107"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "143"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "734"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "571"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "468"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "193"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201108"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "137"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1083"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "832"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "768"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "266"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201109"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "233"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1266"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "995"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "827"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "340"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201110"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "265"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1327"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "956"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "811"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "306"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201111"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "280"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1183"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "918"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "861"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "336"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201112"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "278"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1096"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "831"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "792"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "276"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201113"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "236"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "804"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "627"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "504"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "201"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201114"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "171"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "730"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "600"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "523"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "174"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201115"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "120"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1147"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "915"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "782"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "320"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201116"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "270"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1308"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1038"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "900"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "364"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201117"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "339"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1376"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1029"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "944"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "338"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201118"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "303"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1376"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1051"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "948"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "360"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201119"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "312"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1351"
+        },
+        {
+          "value": "39"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1029"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "947"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "329"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201120"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "303"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1103"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "817"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "705"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "241"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201121"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "220"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "912"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "691"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "612"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "222"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201122"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "159"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1345"
+        },
+        {
+          "value": "44"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "960"
+        },
+        {
+          "value": "36"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "925"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "306"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201123"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "297"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1486"
+        },
+        {
+          "value": "40"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1109"
+        },
+        {
+          "value": "32"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "960"
+        },
+        {
+          "value": "38"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "418"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201124"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "325"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1543"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1176"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "999"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "396"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201125"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "353"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1398"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1080"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "961"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "322"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201126"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "291"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1327"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1096"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "895"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "316"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201127"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "232"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1146"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "932"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "803"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "244"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201128"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "168"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1098"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "899"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "726"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "255"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201129"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "194"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1598"
+        },
+        {
+          "value": "43"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1213"
+        },
+        {
+          "value": "36"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "959"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "359"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201130"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "322"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1695"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1272"
+        },
+        {
+          "value": "32"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1101"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "438"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201201"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "332"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1650"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1197"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1042"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "425"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201202"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "318"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1825"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1306"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1131"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "434"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201203"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "321"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1637"
+        },
+        {
+          "value": "42"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1156"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1076"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "387"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201204"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "319"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1226"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "897"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "816"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "279"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201205"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "181"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1142"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "903"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "735"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "259"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201206"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "197"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1816"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1432"
+        },
+        {
+          "value": "29"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1223"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "440"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201207"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "371"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2616"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2018"
+        },
+        {
+          "value": "37"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1709"
+        },
+        {
+          "value": "31"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "573"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201208"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "436"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2154"
+        },
+        {
+          "value": "43"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1655"
+        },
+        {
+          "value": "34"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1373"
+        },
+        {
+          "value": "32"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "548"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201209"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "366"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2003"
+        },
+        {
+          "value": "42"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1604"
+        },
+        {
+          "value": "31"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1331"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "479"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201210"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "412"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1926"
+        },
+        {
+          "value": "47"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1514"
+        },
+        {
+          "value": "36"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1203"
+        },
+        {
+          "value": "38"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "439"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201211"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "372"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1457"
+        },
+        {
+          "value": "28"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1176"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "903"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "312"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201212"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "200"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1367"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "997"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "855"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "235"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201213"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "169"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1813"
+        },
+        {
+          "value": "28"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1298"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1166"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "407"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201214"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "283"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1950"
+        },
+        {
+          "value": "42"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1509"
+        },
+        {
+          "value": "26"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1269"
+        },
+        {
+          "value": "37"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "479"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201215"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "349"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1883"
+        },
+        {
+          "value": "37"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1429"
+        },
+        {
+          "value": "27"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1232"
+        },
+        {
+          "value": "34"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "460"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201216"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "342"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1859"
+        },
+        {
+          "value": "36"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1397"
+        },
+        {
+          "value": "24"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1212"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "391"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201217"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "331"
+        },
+        {
+          "value": "29"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1677"
+        },
+        {
+          "value": "30"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1290"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1136"
+        },
+        {
+          "value": "35"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "383"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201218"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "239"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1249"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "964"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "873"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "243"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201219"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "176"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1183"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "894"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "740"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "236"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201220"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "156"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1392"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1092"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "892"
+        },
+        {
+          "value": "21"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "320"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201221"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "238"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1329"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1031"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "821"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "313"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201222"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "246"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1196"
+        },
+        {
+          "value": "22"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "950"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "765"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "261"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201223"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "195"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1013"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "803"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "626"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "200"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201224"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "117"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1005"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "740"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "582"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "188"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201225"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "97"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "997"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "730"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "637"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "168"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201226"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "98"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1019"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "725"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "600"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "182"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201227"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "109"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1186"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "926"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "765"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "240"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201228"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "159"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1229"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "928"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "806"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "231"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201229"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "169"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1145"
+        },
+        {
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "889"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "732"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "254"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201230"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "136"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "977"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "704"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "606"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "181"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20201231"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "117"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "842"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "650"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "564"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "138"
+        },
+        {
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210101"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "85"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1029"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "782"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "632"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "152"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210102"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "98"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "996"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "840"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "631"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "175"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210103"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "104"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1226"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "925"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "778"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "232"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210104"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "149"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1661"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1227"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1021"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "311"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210105"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "183"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "2160"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1649"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1392"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "425"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210106"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "274"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1713"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1212"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1047"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "334"
+        },
+        {
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210107"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "246"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1493"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1131"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "978"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "313"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210108"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "222"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1188"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "881"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "736"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "244"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210109"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "142"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1102"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "819"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "689"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "201"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210110"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "127"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1399"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1112"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "889"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "271"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210111"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "198"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1651"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1298"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1065"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "342"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210112"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "252"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1577"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1258"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1073"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "330"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210113"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "242"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1524"
+        },
+        {
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1148"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1025"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "349"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210114"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "223"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1381"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1076"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "924"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "266"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210115"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "199"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1104"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "902"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "758"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "214"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210116"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "135"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1123"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "792"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "676"
+        },
+        {
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "192"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210117"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "144"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1311"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "951"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "805"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "269"
+        },
+        {
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210118"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "178"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1463"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1101"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "931"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "366"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210119"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "217"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1651"
+        },
+        {
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1299"
+        },
+        {
+          "value": "29"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1088"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "352"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210120"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "274"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1636"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1272"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1036"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "365"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210121"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "261"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1382"
+        },
+        {
+          "value": "37"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1094"
+        },
+        {
+          "value": "19"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "924"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "334"
+        },
+        {
+          "value": "23"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210122"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "226"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1069"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "878"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "713"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "255"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210123"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "150"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1059"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "798"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "681"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "227"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210124"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "144"
+        },
+        {
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1403"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1037"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "876"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "306"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210125"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "218"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1422"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1087"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "875"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "321"
+        },
+        {
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210126"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "259"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1561"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1192"
+        },
+        {
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "986"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "372"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210127"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "335"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1391"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1107"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "994"
+        },
+        {
+          "value": "14"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "358"
+        },
+        {
+          "value": "17"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210128"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "270"
+        },
+        {
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1317"
+        },
+        {
+          "value": "13"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1004"
+        },
+        {
+          "value": "11"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "865"
+        },
+        {
+          "value": "16"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "285"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210129"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "219"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "988"
+        },
+        {
+          "value": "9"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "793"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "668"
+        },
+        {
+          "value": "8"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "226"
+        },
+        {
+          "value": "6"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210130"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "167"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        },
+        {
+          "value": "google"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "1045"
+        },
+        {
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        },
+        {
+          "value": "<Other>"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "726"
+        },
+        {
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        },
+        {
+          "value": "(direct)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "625"
+        },
+        {
+          "value": "7"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        },
+        {
+          "value": "shop.googlemerchandisestore.com"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "223"
+        },
+        {
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "dimensionValues": [
+        {
+          "value": "20210131"
+        },
+        {
+          "value": "(data deleted)"
+        }
+      ],
+      "metricValues": [
+        {
+          "value": "158"
+        },
+        {
+          "value": "2"
         }
       ]
     }
   ],
-  "rowCount": 5
+  "rowCount": 460
 }

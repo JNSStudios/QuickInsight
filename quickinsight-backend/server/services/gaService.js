@@ -81,9 +81,9 @@ const mock = {
   async getTrafficSources(options = {}) {
     try {
       const { startDate, endDate, rollingWindow, period } = options || {};
-      const ts = await loadJson("ga4_runReport_timeSeries.json");
       const raw = await loadJson("ga4_runReport_trafficSources.json");
-      const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
+      // Find the last date in the mock data
+      const allDates = raw.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       let start, end;
@@ -98,14 +98,23 @@ const mock = {
         start = formatISO(start, { representation: "date" });
         end = formatISO(end, { representation: "date" });
       }
-      // Simulate per-date aggregation by scaling users/purchases by the date range
-      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
-      const scale = Math.min(1, rangeDays / 90); // 90 days is the full mock period
-      return raw.rows.map(r => ({
-        source:     r.dimensionValues[0].value,
-        users:      Math.round(+r.metricValues[0].value * scale),
-        purchases:  Math.round(+r.metricValues[1].value * scale),
-      }));
+      // Aggregate by source for the date range
+      const agg = {};
+      raw.rows.forEach(r => {
+        if (!r.dimensionValues || r.dimensionValues.length < 2) return;
+        const dateStr = r.dimensionValues[0].value;
+        const source = r.dimensionValues[1].value;
+        const dISO = formatISO(parse(dateStr, "yyyyMMdd", new Date()), { representation: "date" });
+        if (dISO < start || dISO > end) return;
+        const users = +r.metricValues[0].value;
+        const purchases = +r.metricValues[1].value;
+        if (!agg[source]) {
+          agg[source] = { source, users: 0, purchases: 0 };
+        }
+        agg[source].users += users;
+        agg[source].purchases += purchases;
+      });
+      return Object.values(agg);
     } catch (err) {
       console.error("Mock data error:", err);
       throw new Error("Unable to load mock GA traffic sources data");
@@ -157,9 +166,9 @@ const mock = {
   async getTopItems(limit = 10, options = {}) {
     try {
       const { startDate, endDate, rollingWindow, period } = options || {};
-      const ts = await loadJson("ga4_runReport_timeSeries.json");
       const raw = await loadJson("ga4_runReport_topItems.json");
-      const allDates = ts.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
+      // Find all unique dates in the data
+      const allDates = raw.rows.map(r => r.dimensionValues && r.dimensionValues[0] && r.dimensionValues[0].value).filter(Boolean);
       const lastDateStr = allDates.sort().slice(-1)[0];
       const lastDate = lastDateStr ? parse(lastDateStr, "yyyyMMdd", new Date()) : new Date();
       let start, end;
@@ -174,13 +183,31 @@ const mock = {
         start = formatISO(start, { representation: "date" });
         end = formatISO(end, { representation: "date" });
       }
-      const rangeDays = Math.max(1, Math.round((new Date(end) - new Date(start)) / (24 * 60 * 60 * 1000)) + 1);
-      const scale = Math.min(1, rangeDays / 90); // 90 days is the full mock period
-      return raw.rows.slice(0, limit).map(r => ({
-        name: r.dimensionValues[0].value,
-        quantity: Math.round(+r.metricValues[0].value * scale),
-        revenue: Math.round(+r.metricValues[1].value * scale),
-      }));
+      // Helper: check if item name is valid
+      function isValidItemName(name) {
+        if (!name) return false;
+        const invalids = ["(not set)", "not set", "", null, undefined];
+        return !invalids.includes(name.trim().toLowerCase());
+      }
+      // Tally up all items over the period, skipping invalid names
+      const agg = {};
+      raw.rows.forEach(r => {
+        if (!r.dimensionValues || r.dimensionValues.length < 2) return;
+        const dateStr = r.dimensionValues[0].value;
+        const name = r.dimensionValues[1].value;
+        if (!isValidItemName(name)) return;
+        const dISO = formatISO(parse(dateStr, "yyyyMMdd", new Date()), { representation: "date" });
+        if (dISO < start || dISO > end) return;
+        const quantity = +r.metricValues[0].value;
+        const revenue = +r.metricValues[1].value;
+        if (!agg[name]) agg[name] = { name, quantity: 0, revenue: 0 };
+        agg[name].quantity += quantity;
+        agg[name].revenue += revenue;
+      });
+      // Get top N by quantity
+      return Object.values(agg)
+        .sort((a, b) => b.quantity - a.quantity)
+        .slice(0, limit);
     } catch (err) {
       console.error("Mock data error:", err);
       throw new Error("Unable to load mock GA top items data");

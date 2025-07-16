@@ -117,7 +117,7 @@ export default function Dashboard() {
         // Transform API data to KPI format
         const kpiData = [
           { 
-            title: 'Total Visitors', 
+            title: 'Total Unique Visitors', 
             subtitle: 'Today\'s Visitors',
             value: visitorsData.value?.toLocaleString() || '0', 
             subValue: visitorsTodayData.value?.toLocaleString() || '0',
