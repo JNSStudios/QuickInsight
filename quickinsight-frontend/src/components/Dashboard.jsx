@@ -58,61 +58,38 @@ export default function Dashboard() {
           period: viewingDataRange.toString()
         });
 
+
         // Fetch all KPI data in parallel for current period
         const [
           visitorsRes, 
           revenueRes, 
           topItemRes, 
           refundRes, 
-          refundChangeRes,
           trafficSourcesRes
         ] = await Promise.all([
           fetch(`${apiEndpoint}visitors?${params}`),
           fetch(`${apiEndpoint}revenue-and-purchases?${params}`),
           fetch(`${apiEndpoint}top-item?${params}`),
           fetch(`${apiEndpoint}refund-rate?${params}`),
-          fetch(`${apiEndpoint}refund-rate/change?${params}`),
           fetch(`${apiEndpoint}traffic-sources?${params}`)
         ]);
+
 
         const visitorsData = await visitorsRes.json();
         const revenueData = await revenueRes.json();
         const topItemData = await topItemRes.json();
         const refundData = await refundRes.json();
-        const refundChangeData = await refundChangeRes.json();
         const trafficSourcesData = await trafficSourcesRes.json();
 
         // Fetch today's visitors (latest day in period)
         const visitorsTodayRes = await fetch(`${apiEndpoint}visitors?latestDay=true&${params}`);
         const visitorsTodayData = await visitorsTodayRes.json();
 
-        // Use percentChange from backend
-        let refundChange;
-        if (typeof refundChangeData.data?.percentChange === 'number') {
-          const percent = refundChangeData.data.percentChange;
-          refundChange = `${percent >= 0 ? '+' : ''}${percent.toFixed(1)}%`;
-        } else {
-          // If no percentChange, show 0.0% with sign matching current vs previous
-          const current = refundChangeData.data?.current;
-          const previous = refundChangeData.data?.previous;
-          let sign = '';
-          if (typeof current === 'number' && typeof previous === 'number') {
-            if (current > previous) 
-              sign = '+';
-            else if (current < previous) 
-              sign = '-';
-            else 
-              sign = '';
-          } else {
-            sign = '';
-          }
-          refundChange = `0.0%`;
-        }
-
         // Set currency code and symbol for use elsewhere
         let code = revenueData.data?.currency || 'USD';
         setCurrencyCode(code.toUpperCase());
         const symbol = getSymbolFromCurrency(code);
+
 
         // Transform API data to KPI format
         const kpiData = [

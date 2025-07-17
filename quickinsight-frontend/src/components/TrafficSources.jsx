@@ -66,7 +66,7 @@ export default function TrafficSources({ data }) {
   // Calculate total users
   const totalUsers = sortedData.reduce((sum, item) => sum + item.value, 0);
 
-  console.log("TrafficSources rendering with data:", sortedData);
+  // console.log("TrafficSources rendering with data:", sortedData);
 
 
 

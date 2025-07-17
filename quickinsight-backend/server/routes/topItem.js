@@ -1,5 +1,5 @@
 import express from "express";
-import { getTopItems } from "../services/gaService.js";
+import apiService from "../services/APIService.js";
 import { requireDateRange } from "./requireDateRange.js";
 
 const router = express.Router();
@@ -8,10 +8,10 @@ const router = express.Router();
  * GET /top-item
  * Returns the single best-selling item or ?limit=N for N items.
  */
-router.get("/", requireDateRange, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const { limit = 1, startDate, endDate, rollingWindow, period } = req.query;
-    const items = await getTopItems(Number(limit), { startDate, endDate, rollingWindow: rollingWindow === 'true', period });
+    const { limit = 1, period } = req.query;
+    const items = await apiService.getGATopItems(Number(limit), { period });
     res.json({ ok: true, data: items });
   } catch (err) {
     next(err);

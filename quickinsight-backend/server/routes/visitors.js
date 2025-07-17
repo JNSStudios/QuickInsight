@@ -1,28 +1,22 @@
 import express from "express";
-import { getGaSummary, getLatestDayVisitors } from "../services/gaService.js";
-import { requireDateRange } from "./requireDateRange.js";
+import apiService from "../services/APIService.js";
 
 const router = express.Router();
 
-router.get("/", requireDateRange, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const { startDate, endDate, rollingWindow, period, latestDay } = req.query;
-    const options = {
-      startDate,
-      endDate,
-      rollingWindow: rollingWindow === 'true',
-      period
-    };
+    const { period, latestDay } = req.query;
+    const gaSummary = await apiService.getGASummary({ period });
     if (latestDay === 'true') {
-      const { visitors } = await getLatestDayVisitors(options);
+      const timeSeries = await apiService.getGATimeSeries({ period });
+      const visitors = timeSeries && timeSeries.length > 0 ? timeSeries[timeSeries.length - 1].users : 0;
       return res.json({
         value: visitors,
         unit: '',
         updatedAt: new Date().toISOString()
       });
     }
-    console.log("Calling getGaSummary with options:", options);
-    const { visitors } = await getGaSummary(options);
+    const { visitors } = gaSummary;
     res.json({
       value: visitors,
       unit: "",

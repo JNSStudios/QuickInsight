@@ -104,7 +104,12 @@ function AnimatedNumber({ value, duration = 400, millify: useMillify = false, pr
 
 
 export default function KPICard({ kpi }) {
-  
+  // Animation state for text-only value
+  const [textValueAnim, setTextValueAnim] = useState(false);
+  const [textSubValueAnim, setTextSubValueAnim] = useState(false);
+  const prevTextValue = useRef();
+  const prevTextSubValue = useRef();
+
   // Helper to abbreviate numbers using millify if more than 3 digits, preserving prefix/suffix and symbol (symbol is now passed in)
   function abbreviateIfLong(val) {
     if (typeof val === 'number') {
@@ -176,6 +181,25 @@ export default function KPICard({ kpi }) {
   const processedValue = processText(kpi.value);
   const processedSubValue = kpi.subValue ? processText(kpi.subValue) : undefined;
 
+  // Animation effect for text-only value
+  useEffect(() => {
+    if (!isValueNumeric && prevTextValue.current !== processedValue.text) {
+      setTextValueAnim(true);
+      const timeout = setTimeout(() => setTextValueAnim(false), 400);
+      prevTextValue.current = processedValue.text;
+      return () => clearTimeout(timeout);
+    }
+  }, [processedValue.text, isValueNumeric]);
+
+  useEffect(() => {
+    if (kpi.subValue && !isNumericLike(kpi.subValue) && prevTextSubValue.current !== processedSubValue.text) {
+      setTextSubValueAnim(true);
+      const timeout = setTimeout(() => setTextSubValueAnim(false), 400);
+      prevTextSubValue.current = processedSubValue.text;
+      return () => clearTimeout(timeout);
+    }
+  }, [processedSubValue?.text, kpi.subValue]);
+
   return (
     <Card variant="outlined" className="card-dashboard">
       <Box style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
@@ -190,6 +214,7 @@ export default function KPICard({ kpi }) {
         <Typography
           variant="h4"
           component="div"
+          className={!isValueNumeric && textValueAnim ? 'kpi-text-animate' : ''}
           style={{
             fontWeight: 'bold',
             fontSize: processedValue.useSmallFont ? '1.7rem' : undefined,
@@ -207,39 +232,40 @@ export default function KPICard({ kpi }) {
             processedValue.text
           )}
         </Typography>
-              {processedSubValue && (
-                <Typography
-                  variant="h4"
-                  style={{
-                    color: (typeof processedSubValue.text === 'string' && (processedSubValue.text.startsWith('+') || processedSubValue.text.startsWith('-')))
-                      ? (() => {
-                          const isPositive = processedSubValue.text.startsWith('+');
-                          const isNegative = processedSubValue.text.startsWith('-');
-                          if (kpi.invertColors) {
-                            // For metrics where negative is good (like refund rate)
-                            return isNegative ? 'green' : (isPositive ? 'red' : 'inherit');
-                          } else {
-                            // Default: positive is good, negative is bad
-                            return isPositive ? 'green' : (isNegative ? 'red' : 'inherit');
-                          }
-                        })()
-                      : 'inherit',
-                    fontWeight: 'bold',
-                    fontSize: processedSubValue.useSmallFont ? '1.2rem' : undefined,
-                    maxWidth: processedSubValue.useSmallFont ? 220 : undefined,
-                    overflow: processedSubValue.useSmallFont ? 'hidden' : undefined,
-                    textOverflow: processedSubValue.useSmallFont ? 'ellipsis' : undefined,
-                    whiteSpace: processedSubValue.useSmallFont ? 'nowrap' : undefined,
-                    letterSpacing: processedSubValue.useSmallFont ? '0.01em' : undefined
-                  }}
-                >
-                  {isNumericLike(kpi.subValue) ? (
-                    <AnimatedNumber value={kpi.subValue} millify precision={1} />
-                  ) : (
-                    processedSubValue.text
-                  )}
-                </Typography>
-              )}
+        {processedSubValue && (
+          <Typography
+            variant="h4"
+            className={!isNumericLike(kpi.subValue) && textSubValueAnim ? 'kpi-text-animate' : ''}
+            style={{
+              color: (typeof processedSubValue.text === 'string' && (processedSubValue.text.startsWith('+') || processedSubValue.text.startsWith('-')))
+                ? (() => {
+                    const isPositive = processedSubValue.text.startsWith('+');
+                    const isNegative = processedSubValue.text.startsWith('-');
+                    if (kpi.invertColors) {
+                      // For metrics where negative is good (like refund rate)
+                      return isNegative ? 'green' : (isPositive ? 'red' : 'inherit');
+                    } else {
+                      // Default: positive is good, negative is bad
+                      return isPositive ? 'green' : (isNegative ? 'red' : 'inherit');
+                    }
+                  })()
+                : 'inherit',
+              fontWeight: 'bold',
+              fontSize: processedSubValue.useSmallFont ? '1.2rem' : undefined,
+              maxWidth: processedSubValue.useSmallFont ? 220 : undefined,
+              overflow: processedSubValue.useSmallFont ? 'hidden' : undefined,
+              textOverflow: processedSubValue.useSmallFont ? 'ellipsis' : undefined,
+              whiteSpace: processedSubValue.useSmallFont ? 'nowrap' : undefined,
+              letterSpacing: processedSubValue.useSmallFont ? '0.01em' : undefined
+            }}
+          >
+            {isNumericLike(kpi.subValue) ? (
+              <AnimatedNumber value={kpi.subValue} millify precision={1} />
+            ) : (
+              processedSubValue.text
+            )}
+          </Typography>
+        )}
       </Box>
     </Card>
   );
