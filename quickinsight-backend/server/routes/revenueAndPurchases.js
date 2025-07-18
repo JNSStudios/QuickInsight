@@ -10,11 +10,10 @@ const router = express.Router();
  */
 router.get("/", async (req, res, next) => {
   try {
-    const { period } = req.query;
-    const { stripeData } = await apiService.getAllData();
-    // Filter summary by period in code
-    const summary = await apiService.getStripeSummary({ period });
-    res.json({ ok: true, data: summary });
+          // Make this route period-aware
+          const { period } = req.query;
+          const summary = await apiService.getStripeSummary({ period });
+          res.json({ ok: true, data: summary });
   } catch (err) {
     next(err);
   }

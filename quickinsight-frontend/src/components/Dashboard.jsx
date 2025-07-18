@@ -13,7 +13,13 @@ import KPICard from './KPICard';
 import ChangesOverTime from './ChangesOverTime';
 import TrafficSources from './TrafficSources';
 
+/*
 
+CHECK POSTGRESQL DATABASE BEFORE YOU LOAD THE SITE TO MAKE SURE THAT THE UPDATE-CACHE FUNCTIONALITY STILL WORKS!!!!
+
+AND DELETE THIS MESSAGE AFTER!
+
+*/
 
 export default function Dashboard() {
   // Button definitions
@@ -41,7 +47,10 @@ export default function Dashboard() {
     { title: 'Refund Rate', subtitle: 'Money Refunded', value: '0.32%', subValue: '$2.2k', invertColors: true },
   ];
 
+
   const [trafficData, setTrafficData] = useState([]);
+  const [aiBrief, setAiBrief] = useState('');
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,6 +59,7 @@ export default function Dashboard() {
         setKpis(testKPIs);
         setChangesData([]);
         setTrafficData([]);
+        setAiBrief('');
         return;
       }
 
@@ -58,28 +68,29 @@ export default function Dashboard() {
           period: viewingDataRange.toString()
         });
 
-
         // Fetch all KPI data in parallel for current period
         const [
           visitorsRes, 
           revenueRes, 
           topItemRes, 
           refundRes, 
-          trafficSourcesRes
+          trafficSourcesRes,
+          aiBriefRes
         ] = await Promise.all([
           fetch(`${apiEndpoint}visitors?${params}`),
           fetch(`${apiEndpoint}revenue-and-purchases?${params}`),
           fetch(`${apiEndpoint}top-item?${params}`),
           fetch(`${apiEndpoint}refund-rate?${params}`),
-          fetch(`${apiEndpoint}traffic-sources?${params}`)
+          fetch(`${apiEndpoint}traffic-sources?${params}`),
+          fetch(`${apiEndpoint}summary?period=${viewingDataRange}`)
         ]);
-
 
         const visitorsData = await visitorsRes.json();
         const revenueData = await revenueRes.json();
         const topItemData = await topItemRes.json();
         const refundData = await refundRes.json();
         const trafficSourcesData = await trafficSourcesRes.json();
+        const aiBriefData = await aiBriefRes.json();
 
         // Fetch today's visitors (latest day in period)
         const visitorsTodayRes = await fetch(`${apiEndpoint}visitors?latestDay=true&${params}`);
@@ -89,7 +100,6 @@ export default function Dashboard() {
         let code = revenueData.data?.currency || 'USD';
         setCurrencyCode(code.toUpperCase());
         const symbol = getSymbolFromCurrency(code);
-
 
         // Transform API data to KPI format
         const kpiData = [
@@ -101,22 +111,22 @@ export default function Dashboard() {
             invertColors: false 
           },
           { 
-            title: `Total profit (${code ? code.toUpperCase() : 'ERR'})`,
-            subtitle: 'Total purchases', 
-            value: `${symbol || 'ERR'}${(revenueData.data?.net ?? 0).toLocaleString()}`,
-            subValue: revenueData.data?.orders?.toString() || '0',
+            title: `Total Profit (${code ? code.toUpperCase() : 'ERR'})`,
+            subtitle: 'Total Purchases', 
+            value: revenueData.data && revenueData.data.net != null ? `${symbol || 'ERR'}${revenueData.data.net}` : `${symbol || 'ERR'}0`,
+            subValue: revenueData.data && revenueData.data.orders != null ? Number(revenueData.data.orders).toLocaleString() : '0',
             invertColors: false 
           },
           { 
-            title: 'Top item sold', 
+            title: 'Top Item Sold', 
             value: topItemData.data?.[0]?.name || 'No data', 
             invertColors: false 
           },
           { 
             title: 'Refund Rate', 
             subtitle: 'Refund Amount',
-            value: `${(refundData.data?.rate ?? 0).toFixed(2)}%`,
-            subValue: `${symbol || 'ERR'}${revenueData.data?.refunded?.toString() || '0'}`,
+            value: `${refundData.data && refundData.data.rate != null ? Number(refundData.data.rate).toFixed(2) : '0.00'}%`,
+            subValue: revenueData.data && revenueData.data.refunded != null ? `${symbol || 'ERR'}${revenueData.data.refunded}` : `${symbol || 'ERR'}0`,
             invertColors: true 
           }
         ];
@@ -140,11 +150,15 @@ export default function Dashboard() {
         // Set traffic sources data
         setTrafficData(trafficSourcesData.data || []);
 
+        // Set AI Brief
+        setAiBrief(aiBriefData.summary || 'No summary available.');
+
       } catch (err) {
         console.log('Failed to fetch KPIs, using test data:', err);
         setKpis(testKPIs);
         setChangesData([]);
         setTrafficData([]);
+        setAiBrief('');
       }
     };
     fetchData();
@@ -240,14 +254,14 @@ export default function Dashboard() {
           </Card>
 
 
+
           <Card variant="outlined" className="card-brief">
             <Typography variant="h4" component="div" style={{ fontWeight: 'bold', textAlign: 'center'}}>
               AI Brief
             </Typography>
             <div className="ai-brief-gradient" />
 
-            <p>Placeholder for AI Brief</p>
-
+            <p>{aiBrief}</p>
             <Box style={{ marginTop: 'auto' }}>
               <hr style={{ color: '#333'}} />
 
@@ -255,7 +269,6 @@ export default function Dashboard() {
                 AI can be incorrect. Verify its statements.
               </p>
             </Box>
-
           </Card>
 
           <Box className="maincontent-footer">

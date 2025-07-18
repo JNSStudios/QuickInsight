@@ -4,9 +4,13 @@ import { formatISO, fromUnixTime, parse, subMonths, subYears, endOfDay, startOfM
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import Stripe from "stripe";
 import db from "./database.js";
-
+import OpenAI from "openai";
 
 env.config();
+
+const openai = new OpenAI({
+  apiKey: process.env.OAI_API_KEY,
+});
 
 // Centralized API service that replaces gaService and stripeService
 export class APIService {
@@ -20,14 +24,22 @@ export class APIService {
     let cachedEntry = null;
     try {
       const result = await db.query(
-        'SELECT ga_data, stripe_data, last_saved FROM "CachedData" WHERE user_id = $1',
+        'SELECT ga_data, stripe_data, last_saved, business_name, business_industry, oai_data FROM "CachedData" WHERE user_id = $1',
         [this.MOCK_USER_KEY]
       );
       if (result.rows.length > 0) {
         cachedEntry = result.rows[0];
+        // Save business name and industry to instance variables for later use
+        this.businessName = cachedEntry.business_name;
+        this.businessIndustry = cachedEntry.business_industry;
+      } else {
+        this.businessName = null;
+        this.businessIndustry = null;
       }
     } catch (err) {
       console.error('Error reading cache from database:', err);
+      this.businessName = null;
+      this.businessIndustry = null;
     }
     // 2. Determine if we need fresh data
     if (this.shouldFetchFreshData(cachedEntry)) {
@@ -38,6 +50,9 @@ export class APIService {
       return {
         gaData: freshData.gaData,
         stripeData: freshData.stripeData,
+        businessName: cachedEntry ? cachedEntry.business_name : null,
+        businessIndustry: cachedEntry ? cachedEntry.business_industry : null,
+        oaiData: freshData.openAIData || null,
         cached: false,
         timestamp: new Date()
       };
@@ -46,6 +61,9 @@ export class APIService {
       return {
         gaData: cachedEntry.ga_data,
         stripeData: cachedEntry.stripe_data,
+        businessName: cachedEntry.business_name,
+        businessIndustry: cachedEntry.business_industry,
+        oaiData: cachedEntry.oai_data,
         cached: true,
         timestamp: cachedEntry.last_saved
       };
@@ -84,7 +102,8 @@ export class APIService {
       this.fetchGAData(),
       this.fetchStripeData()
     ]);
-    return { gaData, stripeData };
+    const openAIData = await this.fetchOpenAIData(gaData, stripeData);
+    return { gaData, stripeData, openAIData };
   }
 
   // ===== GA DATA METHODS =====
@@ -118,6 +137,108 @@ export class APIService {
     };
   }
 
+  async fetchOpenAIData(gaData, stripeData) {
+    // Prevent double invocation in the same cycle
+    if (this._openAICallInProgress) {
+      console.warn("[OpenAI] fetchOpenAIData called while previous call in progress. Skipping duplicate call.");
+      return;
+    }
+    this._openAICallInProgress = true;
+    try {
+      const maximumSummaryCharacterLength = 450;
+      const systemText = 
+        `You are an analytics assistant for a business called "${this.businessName}", operating in the "${this.businessIndustry}" industry.
+
+        Your task is to generate concise and insightful summaries based on analytics data provided from Stripe and Google Analytics. You will produce up to four distinct summaries, each corresponding to a different time range:
+
+        - **1MO**: Past month
+        - **3MO**: Past three months
+        - **6MO**: Past six months
+        - **12MO**: Past twelve months
+
+        Begin each summary with the respective timeframe label (1MO, 3MO, 6MO, or 12MO) followed by a new line.
+
+        If the provided data is insufficient for any of these periods, write only "NOTAVAILABLE" under the corresponding label. Do NOT include any additional text for periods without sufficient data.
+
+        Each summary must:
+        - Be no longer than ${maximumSummaryCharacterLength} characters.
+        - Highlight key insights, noteworthy trends, unusual patterns, and actionable recommendations relevant specifically to the "${this.businessIndustry}" industry.
+        - Complement (but not repeat) data already displayed on the dashboard, which includes:
+          - Total Unique Visitors
+          - Today's Visitors
+          - Total Profit
+          - Total Purchases
+          - Top Item Sold
+          - Refund Rate
+          - Refund Amount
+          - Changes over Time in Revenue, Purchases, and Users
+          - Visitor Traffic Sources
+
+        Prioritize providing fresh insights or strategic advice that leverages underlying analytics data not explicitly visible on the dashboard.
+
+        Here’s an example response for a business named "Google Merchandise Store" in the "ecommerce" industry, assuming data for only 3 months is available:
+        ----------------
+        1MO
+        Recent spikes in high-value item sales (e.g., Google Zip Hoodie F/C) suggest premium pricing is driving higher profit margins. Focus promotions around these profitable items during traffic peaks for optimal conversions.
+
+        3MO
+        Visitor engagement rebounded strongly in January after a December decline, with a consistent conversion rate from visitors to purchases. Given traffic primarily originates from Google search and direct visits, prioritize retargeting and SEO improvements to sustain and amplify growth.
+
+        6MO
+        NOTAVAILABLE
+
+        12MO
+        NOTAVAILABLE
+        ----------------`;
+
+      const inputText = `Here is the collected analytics data:\n\n` +
+        `Google Analytics Data:\n${JSON.stringify(gaData, null, 2)}\n\n` +
+        `Stripe Data:\n${JSON.stringify(stripeData, null, 2)}\n`;
+
+      // send the prompt and retrieve output
+      console.log("------------------ABOUT TO CALL OPENAI RESPONSE")
+      const completion = openai.chat.completions.create({
+        model: "gpt-4.1-mini-2025-04-14",
+        store: false,
+        messages: [
+          { role: "system", content: systemText },
+          { role: "user", content: inputText }
+        ],
+      });
+
+      completion.then((result) => console.log(result.choices[0].message));
+
+      // split the response into sections by the labels
+
+      const result = await completion;
+      const text = result.choices[0].message.content || "";
+
+      // Split by label (1MO, 3MO, 6MO, 12MO) at line start
+      const labels = ["1MO", "3MO", "6MO", "12MO"];
+      const sections = {};
+      // Regex to split and keep the label
+      const parts = text.split(/^(1MO|3MO|6MO|12MO)\s*$/gm).filter(Boolean);
+
+      // parts will be like: [label1, content1, label2, content2, ...]
+      for (let i = 0; i < parts.length; i += 2) {
+        const label = parts[i];
+        const content = (parts[i + 1] || "").trim();
+        if (labels.includes(label)) {
+          sections[label] = content;
+        }
+      }
+      // Ensure all labels are present, fill with null if missing
+      labels.forEach(label => {
+        if (!sections[label]) sections[label] = null;
+      });
+
+      console.log("[OpenAI] fetchOpenAIData completed successfully. Split data: ", sections);
+
+      return sections;
+    } finally {
+      this._openAICallInProgress = false;
+    }
+  }
   // ===== CONVENIENCE METHODS FOR CACHED DATA ACCESS =====
   async getGAData() {
     const { gaData } = await this.getAllData();
@@ -614,28 +735,43 @@ export class APIService {
     throw new Error("Live Stripe data not implemented");
   }
 
-  // Write fresh data to database
-  async writeToDatabase({ gaData, stripeData }) {
+  // Write fresh data to database, including OpenAI summary array
+  async writeToDatabase({ gaData, stripeData, openAIData }) {
     try {
       await db.query(
-        `INSERT INTO "CachedData" (user_id, last_saved, ga_data, stripe_data)
-         VALUES ($1, $2, $3, $4)
+        `INSERT INTO "CachedData" (user_id, last_saved, ga_data, stripe_data, oai_data)
+         VALUES ($1, $2, $3, $4, $5)
          ON CONFLICT (user_id) DO UPDATE
-         SET last_saved = $2, ga_data = $3, stripe_data = $4`,
-        [this.MOCK_USER_KEY, new Date(), gaData, stripeData]
+         SET last_saved = $2, ga_data = $3, stripe_data = $4, oai_data = $5`,
+        [this.MOCK_USER_KEY, new Date(), gaData, stripeData, openAIData]
       );
-      console.log('Fresh data written to database');
+      console.log('Fresh data written to database (with OpenAI summary)');
     } catch (err) {
       console.error('Error writing to database:', err);
       throw err;
     }
   }
 
-  // Helper methods for individual service data (if needed)
-  async getGAData(options = {}) {
-    const allData = await this.getAllData(options);
-    return allData.gaData;
+  // Fetch summary for a specific period (e.g., '1MO', '3MO', '6MO', '12MO')
+  async getSummaryByPeriod(period) {
+    const { oaiData } = await this.getAllData();
+    if (!oaiData) return null;
+    // oaiData may be a JSON string or object
+    let summaries = oaiData;
+    if (typeof oaiData === 'string') {
+      try {
+        summaries = JSON.parse(oaiData);
+      } catch (e) {
+        // fallback: return as is
+        return null;
+      }
+    }
+    // Normalize period label
+    const label = period.toUpperCase();
+    return summaries[label] || null;
   }
+
+  // (Removed duplicate getGAData helper at the end)
 }
 
 export const apiService = new APIService();

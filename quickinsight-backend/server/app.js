@@ -1,3 +1,4 @@
+
 import express from 'express'
 import trafficSourcesRouter from './routes/trafficSources.js';
 import topItemRouter from './routes/topItem.js';
@@ -5,6 +6,7 @@ import revenueAndPurchasesRouter from './routes/revenueAndPurchases.js';
 import refundRateRouter from './routes/refundRate.js';
 import changesOverTimeRouter from './routes/changesOverTime.js';
 import visitorsRouter from './routes/visitors.js';
+import summaryRouter from './routes/summary.js';
 
 import cors from 'cors';
 
@@ -19,7 +21,9 @@ app.use('/api/top-item', topItemRouter);                            // passes 1m
 app.use('/api/revenue-and-purchases', revenueAndPurchasesRouter);   // passes 1m, 1m+r, 3m, and 3m+r.
 app.use('/api/refund-rate', refundRateRouter);                      // passes 1m, 1m+r, 3m, and 3m+r.
 app.use('/api/changes-over-time', changesOverTimeRouter);           // passes 1m, 1m+r, 3m, and 3m+r.
+
 app.use('/api/visitors', visitorsRouter);                           // passes 1m, 1m+r, 3m, and 3m+r
+app.use('/api/summary', summaryRouter);                             // GET /api/summary/:period
 
 
 // localhost:3000/
