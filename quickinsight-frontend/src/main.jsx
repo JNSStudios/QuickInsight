@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-
-const theme = createTheme({
-  palette: { mode: 'dark', primary: { main: '#2E70FF' } },
-  // add more theme customization here, refer to MUI docs
-});
-
 import App from "./App.jsx";
+import { useMemo } from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+function Main() {
+  // check if the user prefers light or dark mode and update the color scheme accordingly
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: prefersDarkMode ? 'dark' : 'light',
+          primary: { main: '#40bdd0ff' },
+        },
+      }),
+    [prefersDarkMode]
+  );
+
+  // render main application using the light/dark theme
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <App />
+    </ThemeProvider>
+  );
+}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ThemeProvider theme={theme}>
-    <CssBaseline /> 
-    <App />
-  </ThemeProvider>
+  <Main />
 );

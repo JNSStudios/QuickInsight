@@ -7,6 +7,7 @@ import refundRateRouter from './routes/refundRate.js';
 import changesOverTimeRouter from './routes/changesOverTime.js';
 import visitorsRouter from './routes/visitors.js';
 import summaryRouter from './routes/summary.js';
+import businessInfoRouter from './routes/businessInfo.js';
 
 import cors from 'cors';
 
@@ -16,15 +17,15 @@ const port = 3000
 // Mount API routes
 app.use(cors());
 
-app.use('/api/traffic-sources', trafficSourcesRouter);              // passes 1m, 1m+r, 3m, and 3m+r. 
-app.use('/api/top-item', topItemRouter);                            // passes 1m, 1m+r, 3m, and 3m+r.
-app.use('/api/revenue-and-purchases', revenueAndPurchasesRouter);   // passes 1m, 1m+r, 3m, and 3m+r.
-app.use('/api/refund-rate', refundRateRouter);                      // passes 1m, 1m+r, 3m, and 3m+r.
-app.use('/api/changes-over-time', changesOverTimeRouter);           // passes 1m, 1m+r, 3m, and 3m+r.
+app.use('/api/traffic-sources', trafficSourcesRouter);               
+app.use('/api/top-item', topItemRouter);                            
+app.use('/api/revenue-and-purchases', revenueAndPurchasesRouter);  
+app.use('/api/refund-rate', refundRateRouter);                      
+app.use('/api/changes-over-time', changesOverTimeRouter);           
 
-app.use('/api/visitors', visitorsRouter);                           // passes 1m, 1m+r, 3m, and 3m+r
-app.use('/api/summary', summaryRouter);                             // GET /api/summary/:period
-
+app.use('/api/visitors', visitorsRouter);                           
+app.use('/api/summary', summaryRouter);                             
+app.use('/api/business-info', businessInfoRouter);                             
 
 // localhost:3000/
 // app.get('/', (req, res) => {

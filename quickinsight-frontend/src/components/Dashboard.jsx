@@ -50,16 +50,25 @@ export default function Dashboard() {
 
   const [trafficData, setTrafficData] = useState([]);
   const [aiBrief, setAiBrief] = useState('');
+  const [aiBriefVisible, setAiBriefVisible] = useState(false);
+  const [businessInfo, setBusinessInfo] = useState({ business_name: '', business_industry: '' });
 
 
   useEffect(() => {
+    let aiBriefTimeout;
     const fetchData = async () => {
-      // If debugging, use test data immediately
+      // Fetch all data immediately except AI Brief animation
       if (overrideWithTestData) {
         setKpis(testKPIs);
         setChangesData([]);
         setTrafficData([]);
-        setAiBrief('');
+        setBusinessInfo({ business_name: '', business_industry: '' });
+        // Animate AI Brief only
+        setAiBriefVisible(false);
+        aiBriefTimeout = setTimeout(() => {
+          setAiBrief('');
+          setAiBriefVisible(true);
+        }, 400);
         return;
       }
 
@@ -75,14 +84,16 @@ export default function Dashboard() {
           topItemRes, 
           refundRes, 
           trafficSourcesRes,
-          aiBriefRes
+          aiBriefRes,
+          businessInfoRes
         ] = await Promise.all([
           fetch(`${apiEndpoint}visitors?${params}`),
           fetch(`${apiEndpoint}revenue-and-purchases?${params}`),
           fetch(`${apiEndpoint}top-item?${params}`),
           fetch(`${apiEndpoint}refund-rate?${params}`),
           fetch(`${apiEndpoint}traffic-sources?${params}`),
-          fetch(`${apiEndpoint}summary?period=${viewingDataRange}`)
+          fetch(`${apiEndpoint}summary?period=${viewingDataRange}`),
+          fetch(`${apiEndpoint}business-info`)
         ]);
 
         const visitorsData = await visitorsRes.json();
@@ -91,6 +102,7 @@ export default function Dashboard() {
         const refundData = await refundRes.json();
         const trafficSourcesData = await trafficSourcesRes.json();
         const aiBriefData = await aiBriefRes.json();
+        const businessInfoData = await businessInfoRes.json();
 
         // Fetch today's visitors (latest day in period)
         const visitorsTodayRes = await fetch(`${apiEndpoint}visitors?latestDay=true&${params}`);
@@ -150,18 +162,36 @@ export default function Dashboard() {
         // Set traffic sources data
         setTrafficData(trafficSourcesData.data || []);
 
-        // Set AI Brief
-        setAiBrief(aiBriefData.summary || 'No summary available.');
+        // Set business info
+        setBusinessInfo({
+          business_name: businessInfoData.business_name || '',
+          business_industry: businessInfoData.business_industry || ''
+        });
+
+        // Animate AI Brief only
+        setAiBriefVisible(false);
+        aiBriefTimeout = setTimeout(() => {
+          setAiBrief(aiBriefData.summary || 'Summary is still generating. Try refreshing or changing the date range.');
+          setAiBriefVisible(true);
+        }, 400);
 
       } catch (err) {
         console.log('Failed to fetch KPIs, using test data:', err);
         setKpis(testKPIs);
         setChangesData([]);
         setTrafficData([]);
-        setAiBrief('');
+        setBusinessInfo({ business_name: '', business_industry: '' });
+        setAiBriefVisible(false);
+        aiBriefTimeout = setTimeout(() => {
+          setAiBrief('');
+          setAiBriefVisible(true);
+        }, 400);
       }
     };
     fetchData();
+    return () => {
+      clearTimeout(aiBriefTimeout);
+    };
   }, [apiEndpoint, viewingDataRange]);
 
   // Auto-select highest available range when maxDataRange changes
@@ -183,12 +213,69 @@ export default function Dashboard() {
 
 
 
+  // Info card state
+  const [infoOpen, setInfoOpen] = useState(false);
+
+  const handleInfoOpen = () => setInfoOpen(true);
+  const handleInfoClose = () => setInfoOpen(false);
+
   return (
     <>
       {/* AppBar with title, API status connections, and account glyph*/}
-      <TopBar />
+      <TopBar businessInfo={businessInfo} />
 
-      {/* Main Content */}
+      {/* Info Dialog */}
+      <Box>
+        {/* Overlay for blur/dark background when info card is open */}
+        {infoOpen && (
+          <Box
+            sx={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              bgcolor: 'rgba(0,0,0,0.5)',
+              backdropFilter: 'blur(6px)',
+              zIndex: 1299,
+              transition: 'all 0.3s',
+            }}
+          />
+        )}
+        <Card
+          sx={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: infoOpen ? 'translate(-50%, -50%)' : 'translate(-50%, -60%)',
+            zIndex: 1300,
+            minWidth: 350,
+            maxWidth: 750,
+            display: infoOpen ? 'block' : 'none',
+            boxShadow: 8,
+            p: 3,
+          }}
+        >
+          <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
+            <IconButton onClick={handleInfoClose} size="small">
+              <span style={{ fontWeight: 'bold', fontSize: 18 }}>×</span>
+            </IconButton>
+          </Box>
+          <Typography variant="h5" gutterBottom>
+            About QuickInsight Demo
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            QuickInsight is a demonstration dashboard for visualizing ecommerce business data. It features data source integration, date range filtering, AI-generated summaries, and data caching. (All data shown is for demonstration purposes only.)
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            This project was created by Joshua Schiavi to demonstrate frontend and backend integration, data visualization, and AI capabilities in a modern web application. (View his LinkedIn <a href="https://www.linkedin.com/in/joshua-schiavi/" target="_blank" rel="noopener noreferrer">here</a>.)
+          </Typography>
+          <Typography variant="body1" color="text.secondary" gutterBottom>
+            Built with React/Vite with Material UI for the frontend, Node and Express for the backend, ESLint, and PostgreSQL. Uses Google BigQuery&apos;s &quot;ga4_obfuscated_sample_ecommerce&quot; dataset, adapted into mock API responses from Stripe and Google Analytics. OpenAI API used for AI Brief. New responses generated every hour.
+          </Typography>
+
+        </Card>
+      </Box>
       <Box 
         component="main" 
         className="dashboard-main"
@@ -261,7 +348,12 @@ export default function Dashboard() {
             </Typography>
             <div className="ai-brief-gradient" />
 
-            <p>{aiBrief}</p>
+            <p
+              className={`ai-brief-text${aiBriefVisible ? ' ai-brief-animate-in' : ' ai-brief-animate-out'}`}
+              style={{ margin: 0 }}
+            >
+              {aiBrief || "Generating AI summary..."}
+            </p>
             <Box style={{ marginTop: 'auto' }}>
               <hr style={{ color: '#333'}} />
 
@@ -278,6 +370,7 @@ export default function Dashboard() {
               <IconButton 
                 size="small"
                 style={{ width: 32, height: 32, borderRadius: '50%' }}
+                onClick={handleInfoOpen}
               >
                 <InfoIcon />
               </IconButton>

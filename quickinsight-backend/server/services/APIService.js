@@ -1,4 +1,4 @@
-import { loadJson, toDollars } from "./utilities.js";
+import { loadJson, toDollars, clearJsonCache } from "./utilities.js";
 import env from "dotenv";
 import { formatISO, fromUnixTime, parse, subMonths, subYears, endOfDay, startOfMonth } from "date-fns";
 import { BetaAnalyticsDataClient } from "@google-analytics/data";
@@ -16,10 +16,15 @@ const openai = new OpenAI({
 export class APIService {
   constructor() {
     this.MOCK_USER_KEY = process.env.MOCK_USER_KEY || 'MOCKUSER';
+    this.businessName = null;
+    this.businessIndustry = null;
+    // Track whether we've already bypassed the cache in this session
+    this.hasPerformedCacheBypass = false;
   }
 
   // Main method: get all API data (cached or fresh)
   async getAllData() {
+    console.log('[getAllData] Called');
     // 1. Check if user exists in database
     let cachedEntry = null;
     try {
@@ -29,20 +34,23 @@ export class APIService {
       );
       if (result.rows.length > 0) {
         cachedEntry = result.rows[0];
+        console.log(`[getAllData] Found cached entry with last_saved: ${cachedEntry.last_saved}`);
         // Save business name and industry to instance variables for later use
         this.businessName = cachedEntry.business_name;
         this.businessIndustry = cachedEntry.business_industry;
       } else {
+        console.log('[getAllData] No cached entry found in database');
         this.businessName = null;
         this.businessIndustry = null;
       }
     } catch (err) {
-      console.error('Error reading cache from database:', err);
+      console.error('[getAllData] Error reading cache from database:', err);
       this.businessName = null;
       this.businessIndustry = null;
     }
     // 2. Determine if we need fresh data
     if (this.shouldFetchFreshData(cachedEntry)) {
+      console.log('[getAllData] Fetching fresh data');
       // 3. Fetch fresh data from APIs
       const freshData = await this.fetchFreshAPIData();
       // 4. Write fresh data to database
@@ -57,6 +65,7 @@ export class APIService {
         timestamp: new Date()
       };
     } else {
+      console.log('[getAllData] Using cached data');
       // 3. Return cached data
       return {
         gaData: cachedEntry.ga_data,
@@ -72,17 +81,27 @@ export class APIService {
 
   // Check if we should fetch fresh data based on hour comparison
   shouldFetchFreshData(cachedEntry) {
-    // Force cache bypass if USE_CACHE_BYPASS is set to 'true'
+    // Handle cache bypass logic for testing - only bypass once per session
     if (process.env.USE_CACHE_BYPASS === 'true') {
-      console.log('[CACHE] USE_CACHE_BYPASS is true, forcing cache refresh');
-      return true;
+      if (!this.hasPerformedCacheBypass) {
+        console.log('[CACHE] USE_CACHE_BYPASS is true, performing one-time cache bypass');
+        this.hasPerformedCacheBypass = true;
+        return true;
+      } else {
+        console.log('[CACHE] USE_CACHE_BYPASS is true, but already bypassed once this session - using normal cache logic');
+        // Fall through to normal cache logic below
+      }
     }
+    
     // If no cached entry exists, we need fresh data
     if (!cachedEntry) {
+      console.log('[CACHE] No cached entry found, need fresh data');
       return true;
     }
     const now = new Date();
     const lastSaved = new Date(cachedEntry.last_saved);
+    console.log(`[CACHE] Checking cache validity. Now: ${now.toISOString()}, Last saved: ${lastSaved.toISOString()}`);
+    
     // Compare by hour: if same year, month, date, and hour -> use cache
     if (
       lastSaved.getFullYear() === now.getFullYear() &&
@@ -90,14 +109,19 @@ export class APIService {
       lastSaved.getDate() === now.getDate() &&
       lastSaved.getHours() === now.getHours()
     ) {
+      console.log('[CACHE] Using cached data (same hour)');
       return false; // Use cached data
     }
+    console.log('[CACHE] Cache expired, need fresh data');
     return true; // Need fresh data
   }
 
   // Fetch fresh data from both GA and Stripe APIs
   async fetchFreshAPIData() {
     console.log('Fetching fresh API data...');
+    // Don't clear the JSON cache - let it persist across calls within the same session
+    // clearJsonCache();
+    
     const [gaData, stripeData] = await Promise.all([
       this.fetchGAData(),
       this.fetchStripeData()
@@ -108,11 +132,12 @@ export class APIService {
 
   // ===== GA DATA METHODS =====
   async fetchGAData() {
+    // Get the maximum available dataset (12 months worth)
     const [summary, trafficSources, timeSeries, topItems] = await Promise.all([
-      this.getGASummary(),
-      this.getGATrafficSources(),
-      this.getGATimeSeries(),
-      this.getGATopItems(10)
+      this.getGAMockSummary({ period: "12" }), // Get maximum period dataset
+      this.getGAMockTrafficSources({ period: "12" }), // Get maximum period dataset
+      this.getGAMockTimeSeries({ period: "12" }), // Get maximum period dataset
+      this.getGAMockTopItems(10, { period: "12" }) // Get maximum period dataset
     ]);
     return {
       summary,
@@ -123,11 +148,12 @@ export class APIService {
   }
 
   async fetchStripeData() {
+    // Get the maximum available dataset (12 months worth)
     const [summary, refundRate, timeSeries, topItem] = await Promise.all([
-      this.getStripeSummary(),
-      this.getStripeRefundRate(),
-      this.getStripeTimeSeries(),
-      this.getStripeTopItem()
+      this.getStripeMockSummary({ period: "12" }), // Get maximum period dataset
+      this.getStripeMockRefundRate({ period: "12" }), // Get maximum period dataset
+      this.getStripeMockTimeSeries({ period: "12" }), // Get maximum period dataset
+      this.getStripeMockTopItem({ period: "12" }) // Get maximum period dataset
     ]);
     return {
       summary,
@@ -769,6 +795,12 @@ export class APIService {
     // Normalize period label
     const label = period.toUpperCase();
     return summaries[label] || null;
+  }
+
+  // Reset cache bypass flag for testing purposes
+  resetCacheBypass() {
+    console.log('[CACHE] Resetting cache bypass flag');
+    this.hasPerformedCacheBypass = false;
   }
 
   // (Removed duplicate getGAData helper at the end)

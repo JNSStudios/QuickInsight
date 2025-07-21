@@ -1,3 +1,17 @@
+/* AI Brief animations */
+.ai-brief-text {
+  opacity: 0;
+  transform: translateY(-24px);
+  transition: opacity 0.15s cubic-bezier(0.4,0,0.2,1), transform 0.15s cubic-bezier(0.4,0,0.2,1);
+}
+.ai-brief-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.ai-brief-animate-out {
+  opacity: 0;
+  transform: translateY(24px);
+}
 /* KPI Card text fade-in animation */
 .kpi-text-animate {
   animation: kpiTextFadeIn 0.4s;
