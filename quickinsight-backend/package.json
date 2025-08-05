@@ -15,6 +15,7 @@
     "cross-env": "^7.0.3"
   },
   "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.859.0",
     "@google-analytics/data": "^5.1.0",
     "cors": "^2.8.5",
     "currency-symbol-map": "^5.1.0",

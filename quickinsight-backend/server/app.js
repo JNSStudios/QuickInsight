@@ -12,7 +12,7 @@ import businessInfoRouter from './routes/businessInfo.js';
 import cors from 'cors';
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 8080
 
 // Mount API routes
 app.use(cors());
@@ -35,4 +35,8 @@ app.use('/api/business-info', businessInfoRouter);
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+// AWS Elastic Beanstalk health check endpoint
+app.get('/health', (req, res) => res.sendStatus(200));
+app.get('/', (req, res) => res.send('OK'))
 

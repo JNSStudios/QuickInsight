@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   const isMock = true; // Set to false when using real data
   const overrideWithTestData = false;
-  const apiEndpoint = isMock ? "http://localhost:3000/api/" : "OTHER GOES HERE";
+  const apiEndpoint = "http://localhost:8080/api/";
 
   const failedKPIs = [
     { title: 'Total visitors', subtitle: 'Today\'s visitors', value: 'NULL', subValue: 'NULL', invertColors: false },
