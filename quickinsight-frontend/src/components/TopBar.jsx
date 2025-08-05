@@ -17,7 +17,7 @@ export default function TopBar({ businessInfo }) {
         </Typography>
         <Box flexGrow={1} />
         <Typography variant="h6" noWrap component="div">
-          {businessInfo.business_name || 'Fetching business name from database...'}
+          {businessInfo.business_name || 'Contacting backend and database...'}
         </Typography>
 
         <Box flexGrow={1} />

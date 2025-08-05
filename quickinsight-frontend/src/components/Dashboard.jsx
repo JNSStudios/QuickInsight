@@ -40,11 +40,11 @@ export default function Dashboard() {
   const overrideWithTestData = false;
   const apiEndpoint = isMock ? "http://localhost:3000/api/" : "OTHER GOES HERE";
 
-  const testKPIs = [
-    { title: 'Total visitors', subtitle: 'Today\'s visitors', value: '22,251', subValue: '+4%', invertColors: false },
-    { title: 'Total profit', subtitle: 'Total purchases', value: '$6,234', subValue: '792' , invertColors: false },
-    { title: 'Top item sold', value: 'Zip Hoodie', invertColors: false },
-    { title: 'Refund Rate', subtitle: 'Money Refunded', value: '0.32%', subValue: '$2.2k', invertColors: true },
+  const failedKPIs = [
+    { title: 'Total visitors', subtitle: 'Today\'s visitors', value: 'NULL', subValue: 'NULL', invertColors: false },
+    { title: 'Total profit', subtitle: 'Total purchases', value: 'NULL', subValue: 'NULL' , invertColors: false },
+    { title: 'Top item sold', value: 'NULL', invertColors: false },
+    { title: 'Refund Rate', subtitle: 'Money Refunded', value: 'NULL', subValue: 'NULL', invertColors: true },
   ];
 
 
@@ -53,13 +53,17 @@ export default function Dashboard() {
   const [aiBriefVisible, setAiBriefVisible] = useState(false);
   const [businessInfo, setBusinessInfo] = useState({ business_name: '', business_industry: '' });
 
+  // Error card state
+  const [errorOpen, setErrorOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   useEffect(() => {
     let aiBriefTimeout;
     const fetchData = async () => {
       // Fetch all data immediately except AI Brief animation
       if (overrideWithTestData) {
-        setKpis(testKPIs);
+        setKpis(failedKPIs);
         setChangesData([]);
         setTrafficData([]);
         setBusinessInfo({ business_name: '', business_industry: '' });
@@ -176,16 +180,18 @@ export default function Dashboard() {
         }, 400);
 
       } catch (err) {
-        console.log('Failed to fetch KPIs, using test data:', err);
-        setKpis(testKPIs);
+        console.log('Failed to fetch KPIs:', err);
+        // display "unable to fetch" message in place of KPIs
+        setKpis(failedKPIs);
         setChangesData([]);
         setTrafficData([]);
         setBusinessInfo({ business_name: '', business_industry: '' });
-        setAiBriefVisible(false);
-        aiBriefTimeout = setTimeout(() => {
-          setAiBrief('');
-          setAiBriefVisible(true);
-        }, 400);
+        setAiBrief('Unable to fetch data. Please try again later.');
+        setAiBriefVisible(true); // Show error message immediately
+
+        // Show error card with message
+        setErrorMessage('Unable to contact backend server. Please check your connection or try again later.');
+        setErrorOpen(true);
       }
     };
     fetchData();
@@ -219,6 +225,9 @@ export default function Dashboard() {
   const handleInfoOpen = () => setInfoOpen(true);
   const handleInfoClose = () => setInfoOpen(false);
 
+  // Error card close handler
+  const handleErrorClose = () => setErrorOpen(false);
+
   return (
     <>
       {/* AppBar with title, API status connections, and account glyph*/}
@@ -226,8 +235,8 @@ export default function Dashboard() {
 
       {/* Info Dialog */}
       <Box>
-        {/* Overlay for blur/dark background when info card is open */}
-        {infoOpen && (
+        {/* Overlay for blur/dark background when info card or error card is open */}
+        {(infoOpen || errorOpen) && (
           <Box
             sx={{
               position: 'fixed',
@@ -242,6 +251,7 @@ export default function Dashboard() {
             }}
           />
         )}
+        {/* Info Card */}
         <Card
           sx={{
             position: 'fixed',
@@ -268,12 +278,40 @@ export default function Dashboard() {
             QuickInsight is a demonstration dashboard for visualizing ecommerce business data. It features data source integration, date range filtering, AI-generated summaries, and data caching. (All data shown is for demonstration purposes only.)
           </Typography>
           <Typography variant="body1" gutterBottom>
-            This project was created by Joshua Schiavi to demonstrate frontend and backend integration, data visualization, and AI capabilities in a modern web application. (View his LinkedIn <a href="https://www.linkedin.com/in/joshua-schiavi/" target="_blank" rel="noopener noreferrer">here</a>.)
+            This project was created by Joshua Schiavi to demonstrate frontend and backend integration, Amazon Web Services experience, data visualization, and AI capabilities in a modern web application. (View his LinkedIn <a href="https://www.linkedin.com/in/joshua-schiavi/" target="_blank" rel="noopener noreferrer">here</a>.)
           </Typography>
           <Typography variant="body1" color="text.secondary" gutterBottom>
-            Built with React/Vite with Material UI for the frontend, Node and Express for the backend, ESLint, and PostgreSQL. Uses Google BigQuery&apos;s &quot;ga4_obfuscated_sample_ecommerce&quot; dataset, adapted into mock API responses from Stripe and Google Analytics. OpenAI API used for AI Brief. New responses generated every hour.
+            Built with React/Vite with Material UI for the frontend, Node and Express for the backend, ESLint, and PostgreSQL. Utilizes Amazon Web Services S3 static website hosting, CloudFront and OAC for content delivery, Elastic Beanstalk for the Backend, RDS PostgreSQL, Route 53, and CloudWatch Alarms. Uses Google BigQuery&apos;s &quot;ga4_obfuscated_sample_ecommerce&quot; dataset, adapted into mock API responses from Stripe and Google Analytics. OpenAI API used for AI Brief. New responses generated every hour.
           </Typography>
-
+        </Card>
+        {/* Error Card */}
+        <Card
+          sx={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: errorOpen ? 'translate(-50%, -50%)' : 'translate(-50%, -60%)',
+            zIndex: 1300,
+            minWidth: 350,
+            maxWidth: 600,
+            display: errorOpen ? 'block' : 'none',
+            boxShadow: 8,
+            p: 3,
+            border: '2px solid #d32f2f',
+            bgcolor: '#fff5f5',
+          }}
+        >
+          <Box sx={{ position: 'absolute', top: 8, right: 8 }}>
+            <IconButton onClick={handleErrorClose} size="small">
+              <span style={{ fontWeight: 'bold', fontSize: 18, color: '#d32f2f' }}>×</span>
+            </IconButton>
+          </Box>
+          <Typography variant="h5" gutterBottom color="error">
+            Error
+          </Typography>
+          <Typography variant="body1" gutterBottom color="error">
+            {errorMessage}
+          </Typography>
         </Card>
       </Box>
       <Box 
