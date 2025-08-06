@@ -40,3 +40,9 @@ app.listen(port, () => {
 app.get('/health', (req, res) => res.sendStatus(200));
 app.get('/', (req, res) => res.send('OK'))
 
+function graceful() {
+  server.close(() => process.exit(0));
+}
+
+process.on('SIGTERM', graceful);
+process.on('SIGINT', graceful);
