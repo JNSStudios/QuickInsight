@@ -7,18 +7,34 @@ import env from "dotenv";
 env.config();
 
 async function getDBCreds() {
-  let user = process.env.PG_USER;
-  let password = process.env.PG_PASSWORD;
+  console.log('Fetching DB credentials...');
+  let user = "";
+  let password = "";
 
-  // If you provided an ARN, fetch the JSON secret { username, password }
-  if ((!user || !password) && process.env.RDS_SECRET_ARN) {
-    const sm = new SecretsManagerClient({ region: process.env.AWS_REGION });
-    const { SecretString } = await sm.send(
-      new GetSecretValueCommand({ SecretId: process.env.RDS_SECRET_ARN })
-    );
-    const secret = JSON.parse(SecretString);
-    user = secret.username;
-    password = secret.password;
+  const useLocalProcessing = (process.env.USE_LOCAL_PROCESSING || '').toLowerCase() === 'true';
+
+  if (process.env.RDS_USERPASS) {
+    if (useLocalProcessing) {
+      
+      // Local: RDS_USERPASS is an ARN, fetch from Secrets Manager
+      const sm = new SecretsManagerClient({ region: process.env.AWS_REGION });
+      const { SecretString } = await sm.send(
+        new GetSecretValueCommand({ SecretId: process.env.RDS_USERPASS })
+      );
+      const secret = JSON.parse(SecretString);
+      user = secret.username;
+      password = secret.password;
+    } else {
+
+      // AWS EB: RDS_USERPASS is the decoded secret JSON string
+      try {
+        const secret = JSON.parse(process.env.RDS_USERPASS);
+        user = secret.username;
+        password = secret.password;
+      } catch (e) {
+        throw new Error('Failed to parse RDS_USERPASS as JSON in AWS environment.');
+      }
+    }
   }
 
   if (!user || !password) {
@@ -27,7 +43,6 @@ async function getDBCreds() {
   return { user, password };
 }
 
-// Top-level await works in ESM (Node 18+)
 const { user, password } = await getDBCreds();
 
 const db = new pg.Client({

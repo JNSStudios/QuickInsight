@@ -5,11 +5,50 @@ import { BetaAnalyticsDataClient } from "@google-analytics/data";
 import Stripe from "stripe";
 import db from "./database.js";
 import OpenAI from "openai";
+import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
+
 
 env.config();
 
+// Get a key-value pair from AWS Secrets Manager using an ARN stored in dotenv
+async function getOpenAIKey() {
+  console.log('Fetching OpenAI API key');
+  if (!process.env.OAI_API_KEY) {
+    throw new Error('OAI_API_KEY is not set in environment variables');
+  }
+  const useLocalProcessing = (process.env.USE_LOCAL_PROCESSING || '').toLowerCase() === 'true';
+  let keyOnly;
+  if (useLocalProcessing) {
+    // Local: OAI_API_KEY is an ARN, fetch from Secrets Manager
+    const sm = new SecretsManagerClient({ region: process.env.AWS_REGION });
+    const { SecretString } = await sm.send(
+      new GetSecretValueCommand({ SecretId: process.env.OAI_API_KEY })
+    );
+    if (!SecretString) {
+      throw new Error('SecretString is empty');
+    }
+    try {
+      const parsed = JSON.parse(SecretString);
+      keyOnly = parsed.apiKey || parsed.key || parsed.OPENAI_API_KEY || Object.values(parsed)[0];
+    } catch (e) {
+      keyOnly = SecretString;
+    }
+  } else {
+    // AWS EB: OAI_API_KEY is the decoded secret or the raw key itself
+    try {
+      const parsed = JSON.parse(process.env.OAI_API_KEY);
+      keyOnly = parsed.apiKey || parsed.key || parsed.OPENAI_API_KEY || Object.values(parsed)[0];
+    } catch (e) {
+      keyOnly = process.env.OAI_API_KEY;
+    }
+  }
+  return keyOnly;
+}
+
+const oaikey = await getOpenAIKey();
+
 const openai = new OpenAI({
-  apiKey: process.env.OAI_API_KEY,
+  apiKey: oaikey,
 });
 
 // Centralized API service that replaces gaService and stripeService
