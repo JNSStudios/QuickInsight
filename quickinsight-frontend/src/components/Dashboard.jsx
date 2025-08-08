@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   const isMock = true; // Set to false when using real data
   const overrideWithTestData = false;
-  const apiEndpoint = "http://quickinsight-backend-env.eba-tdvmnf8h.us-east-1.elasticbeanstalk.com/api/";
+  const apiEndpoint = "https://api.quickinsightdemo.com/api/";
 
   const failedKPIs = [
     { title: 'Total visitors', subtitle: 'Today\'s visitors', value: 'NULL', subValue: 'NULL', invertColors: false },
