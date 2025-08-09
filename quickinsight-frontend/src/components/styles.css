@@ -327,8 +327,6 @@
 }
 @media (max-width: 800px) {
   .info-card { max-width: 92vw; padding: 12px !important; }
-  .info-card h5 { font-size: 1.1rem; }
-  .info-card p, .info-card .MuiTypography-body1 { font-size: 0.9rem; }
 }
 
 /* Medium layout (801–1200px): 2-up KPI, full-width final cards */
