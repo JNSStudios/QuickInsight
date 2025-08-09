@@ -26,6 +26,8 @@
   flex-direction: column;
   width: 100%;
   margin-top: 16px;
+  flex: 1 1 auto;
+  min-height: 0; /* allow inner chart to size within flex parent */
 }
 
 .graph-btn-group {
@@ -110,12 +112,14 @@
 }
 .card-row {
   width: 30%;
-  height: 375px;
+  height: 360px;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 .card-brief {
   width: 35%;
-  height: 375px;
+  height: 360px;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -155,6 +159,14 @@
   margin-left: 24px;
 }
 
+/* Mobile TopBar tweaks */
+@media (max-width: 800px) {
+  .topbar-store-name { display: none !important; }
+  .topbar-img { margin-right: 8px; height: 28px; border-width: 2px; }
+  .topbar-avatar { margin-left: 12px; width: 28px; height: 28px; }
+  .topbar-spacer { flex: 0 0 8px; max-width: 8px; }
+}
+
 /* MainContent styles */
 .maincontent-footer {
   display: flex;
@@ -162,7 +174,8 @@
   gap: 8px;
   width: 100%;
   justify-content: center;
-  /* margin-top: 12px; */
+  margin: 0; /* avoid bottom overflow from margins */
+  padding-bottom: 0;
 }
 
 /* AI Brief gradient bar */
@@ -195,24 +208,48 @@
 
 /* Dashboard main box */
 .dashboard-main {
-  margin-top: 64px;
-  min-height: calc(100vh - 64px);
-  width: 100vw;
+  margin-top: 72px; /* leave room for AppBar on desktop */
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
   padding-left: 24px;
   padding-right: 24px;
 }
 .dashboard-header {
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding-top: 0;     /* tightened top gap */
+  padding-bottom: 12px; /* slightly more space below header */
   padding-left: 24px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.dashboard-header h1 {
+  margin: 0;          /* remove any heading margin */
+  line-height: 1.2;   /* slightly tighter line height */
+}
+.mobile-store-name { display: none; }
 .dashboard-btn-group {
   display: flex;
-  gap: 16px;
+  gap: 8px; /* tighter spacing between buttons */
+  width: auto; /* prevent stretching on desktop */
+}
+/* Ensure buttons size to content by default (desktop/medium) */
+.dashboard-btn-group .MuiToggleButton-root {
+  flex: 0 0 auto;
+}
+
+/* Mobile: smaller timeframe button font/size */
+@media (max-width: 800px) {
+  .dashboard-btn-group .MuiToggleButton-root {
+    font-size: 0.85rem !important;
+    padding: 4px 10px !important;
+    min-height: 30px !important;
+    height: 30px !important;
+    line-height: 26px !important;
+  }
 }
 
 /* Utility */
@@ -227,4 +264,100 @@
 }
 .text-bold {
   font-weight: bold;
+}
+
+/* Ensure the ChangesOverTime chart always has height for ResponsiveContainer */
+.changes-over-time-chart {
+  width: 100%;
+  height: 260px; /* default desktop height */
+}
+
+/* Mobile layout: stack header and expand buttons; single-column cards */
+@media (max-width: 800px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-top: 16px; /* add visible space below AppBar */
+    padding-bottom: 8px;
+  }
+  /* Ensure main content clears the shorter mobile AppBar */
+  .dashboard-main { margin-top: 64px; }
+  /* Show mobile store name only on mobile */
+  .mobile-store-name {
+    display: block;
+    text-align: center;
+  opacity: 0.95;
+  margin-top: 8px !important;
+  margin-bottom: 8px !important; /* clear separation above timeframe */
+  font-weight: 700 !important;
+  font-size: 1.5rem !important; /* larger, clearly visible */
+  line-height: 1.35 !important;
+  }
+  /* Center header text on mobile */
+  .dashboard-header h1 { text-align: center; width: 100%; }
+  .dashboard-btn-group {
+    width: 100%;
+  }
+  .dashboard-btn-group .MuiToggleButton-root {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  /* If a disabled button is wrapped in a span by Tooltip, make the span flex too */
+  .dashboard-btn-group > span { display: flex; flex: 1 1 0; }
+
+  .card-dashboard,
+  .card-row,
+  .card-brief {
+    width: 100% !important;
+  }
+}
+
+/* Ensure equal-width toggle buttons fill the container on mobile */
+@media (max-width: 800px) {
+  .dashboard-btn-group .MuiToggleButtonGroup-root { width: 100%; }
+  .dashboard-btn-group { width: 100%; }
+  .dashboard-btn-group .MuiToggleButton-root { flex: 1 1 0; }
+}
+
+/* Info dialog responsive sizing and typography */
+.info-card { max-height: 80vh; overflow: auto; }
+@media (max-width: 1200px) {
+  .info-card { max-width: 90vw; }
+}
+@media (max-width: 800px) {
+  .info-card { max-width: 92vw; padding: 12px !important; }
+  .info-card h5 { font-size: 1.1rem; }
+  .info-card p, .info-card .MuiTypography-body1 { font-size: 0.9rem; }
+}
+
+/* Medium layout (801–1200px): 2-up KPI, full-width final cards */
+@media (max-width: 1200px) and (min-width: 801px) {
+  .card-dashboard {
+    width: 48% !important;
+  }
+  .card-row,
+  .card-brief {
+    width: 100% !important;
+  }
+}
+
+/* Responsive layout: stack all cards on small screens (≤800px) */
+@media (max-width: 800px) {
+  .card-dashboard,
+  .card-row,
+  .card-brief {
+    width: 100% !important;
+  }
+}
+
+/* Medium stage (801–1200px): two KPI per row; final three are full width */
+@media (max-width: 1200px) and (min-width: 801px) {
+  .card-dashboard {
+    width: 48% !important; /* ~2 per row with gap */
+  }
+  .card-row,
+  .card-brief {
+    width: 100% !important; /* one per row */
+  }
 }

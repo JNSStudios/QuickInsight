@@ -3,6 +3,7 @@ import {
   Box, Card, Grid, Typography, Tooltip, IconButton, 
   ToggleButton, ToggleButtonGroup
 } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import InfoIcon from '@mui/icons-material/Info';
 import getSymbolFromCurrency from 'currency-symbol-map';
 
@@ -22,13 +23,16 @@ AND DELETE THIS MESSAGE AFTER!
 */
 
 export default function Dashboard() {
-  // Button definitions
+  // Button definitions (full and compact labels)
   const ranges = [
-    { value: 1, label: 'Past month' },
-    { value: 3, label: 'Past 3 months' },
-    { value: 6, label: 'Past 6 months' },
-    { value: 12, label: 'Past year' },
+    { value: 1, label: 'Past month', shortLabel: '1 mo' },
+    { value: 3, label: 'Past 3 months', shortLabel: '3 mo' },
+    { value: 6, label: 'Past 6 months', shortLabel: '6 mo' },
+    { value: 12, label: 'Past year', shortLabel: '1 yr' },
   ];
+
+  // Match CSS breakpoints: mobile ≤800px
+  const isMobile = useMediaQuery('(max-width:800px)');
 
   const [maxDataRange, setMaxDataRange] = useState(3);
   const [viewingDataRange, setViewingDataRange] = useState(maxDataRange); // start with max available
@@ -253,13 +257,14 @@ export default function Dashboard() {
         )}
         {/* Info Card */}
         <Card
+          className="info-card"
           sx={{
             position: 'fixed',
             top: '50%',
             left: '50%',
             transform: infoOpen ? 'translate(-50%, -50%)' : 'translate(-50%, -60%)',
             zIndex: 1300,
-            minWidth: 350,
+            minWidth: 300,
             maxWidth: 750,
             display: infoOpen ? 'block' : 'none',
             boxShadow: 8,
@@ -319,6 +324,10 @@ export default function Dashboard() {
         className="dashboard-main"
       >
         <Box className="dashboard-header">
+          {/* Mobile-only store name under AppBar */}
+          <Typography variant="subtitle1" className="mobile-store-name">
+            {businessInfo.business_name || ''}
+          </Typography>
           <Typography variant="h5" component="h1">
             <b>
               {ranges.find(r => r.value === viewingDataRange)?.label || `Past ${viewingDataRange} months`}
@@ -329,6 +338,7 @@ export default function Dashboard() {
             exclusive
             onChange={handleViewingDataRangeChange}
             className="dashboard-btn-group"
+            fullWidth={isMobile}
             sx={{
               '& .MuiToggleButton-root': {
                 borderRadius: '100px',
@@ -339,9 +349,13 @@ export default function Dashboard() {
               },
             }}
           >
-            {ranges.map(({ value, label }) => {
+            {ranges.map(({ value, label, shortLabel }) => {
               const disabled = value > maxDataRange;
-              const button = <ToggleButton value={value} disabled={disabled} key={value}>{label}</ToggleButton>;
+              const button = (
+                <ToggleButton value={value} disabled={disabled} key={value} aria-label={label}>
+                  {isMobile ? shortLabel : label}
+                </ToggleButton>
+              );
               
               return disabled ? (
                 <Tooltip title={`Need at least ${value} month${value != 1 ? 's' : ''} of data`} arrow disableInteractive key={value}>

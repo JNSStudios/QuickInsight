@@ -16,7 +16,7 @@ export default function TopBar({ businessInfo }) {
           <b>QuickInsight Demo</b>
         </Typography>
         <Box flexGrow={1} />
-        <Typography variant="h6" noWrap component="div">
+  <Typography variant="h6" noWrap component="div" className="topbar-store-name">
           {businessInfo.business_name || 'Contacting backend and database...'}
         </Typography>
 
@@ -25,7 +25,7 @@ export default function TopBar({ businessInfo }) {
           <img src="/assets/stripe-logo.jpeg" alt="Stripe Connection" className="topbar-img" />
           <img src="/assets/ga-logo.png" alt="Google Analytics" className="topbar-img" />
           <img src="/assets/oai-logo.png" alt="OpenAI" className="topbar-img" />
-          <Box flexGrow={1} />
+          <Box flexGrow={1} className="topbar-spacer" />
           <Avatar alt="Test User Avatar" className="topbar-avatar" src="/assets/avatar-placeholder.png" />
         </Box>
       </Toolbar>

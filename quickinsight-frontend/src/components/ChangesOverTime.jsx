@@ -2,7 +2,7 @@ import React from 'react';
 import getSymbolFromCurrency from 'currency-symbol-map';
 import PropTypes from 'prop-types';
 import { Card, CardContent, Typography, Box, ToggleButton, ToggleButtonGroup } from '@mui/material';
-import { AreaChart, Area, LineChart, Line, CartesianGrid, XAxis, YAxis, Legend, Tooltip } from 'recharts';
+import { AreaChart, Area, LineChart, Line, CartesianGrid, XAxis, YAxis, Legend, Tooltip, ResponsiveContainer } from 'recharts';
 import millify from 'millify';
 import './styles.css';
 
@@ -77,20 +77,24 @@ export default function ChangesOverTime({ data }) {
         </ToggleButton>
       </ToggleButtonGroup>
 
-      <AreaChart width={400} height={250} data={data} >
-        {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
-        <XAxis dataKey="date" interval="equidistantPreserveStart" />
-        <YAxis
-          tickFormatter={selectedButton === 'r'
-            ? (value) => `${currencySymbol}${millify(value)}`
-            : (value) => millify(value)
-          }
-        />
-        {selectedButton === 'u' && <Area {...commonGraphProps} dataKey="users" stroke={userSelectedColor} fill={userSelectedColor} />}
-        {selectedButton === 'p' && <Area {...commonGraphProps} dataKey="purchases" stroke={purSelectedColor} fill={purSelectedColor} />}
-        {selectedButton === 'r' && <Area {...commonGraphProps} dataKey="revenue" stroke={revSelectedColor} fill={revSelectedColor} />}
-        <Tooltip content={<CustomTooltip currencySymbol={currencySymbol}/>} cursor={{ stroke: '#ccc' }} />
-      </AreaChart>
+      <div className="changes-over-time-chart">
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={data}>
+            {/* <CartesianGrid stroke="#eee" strokeDasharray="5 5"/> */}
+            <XAxis dataKey="date" interval="equidistantPreserveStart" />
+            <YAxis
+              tickFormatter={selectedButton === 'r'
+                ? (value) => `${currencySymbol}${millify(value)}`
+                : (value) => millify(value)
+              }
+            />
+            {selectedButton === 'u' && <Area {...commonGraphProps} dataKey="users" stroke={userSelectedColor} fill={userSelectedColor} />}
+            {selectedButton === 'p' && <Area {...commonGraphProps} dataKey="purchases" stroke={purSelectedColor} fill={purSelectedColor} />}
+            {selectedButton === 'r' && <Area {...commonGraphProps} dataKey="revenue" stroke={revSelectedColor} fill={revSelectedColor} />}
+            <Tooltip content={<CustomTooltip currencySymbol={currencySymbol}/>} cursor={{ stroke: '#ccc' }} />
+          </AreaChart>
+        </ResponsiveContainer>
+      </div>
     </Box>
   );
 }
