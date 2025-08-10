@@ -14,6 +14,19 @@ function Main() {
         palette: {
           mode: prefersDarkMode ? 'dark' : 'light',
           primary: { main: '#40bdd0ff' },
+          background: {
+            default: prefersDarkMode ? '#0d1117' : '#f5f5f5',
+            paper: prefersDarkMode ? '#161b22' : '#ffffff',
+          },
+        },
+        components: {
+          MuiCssBaseline: {
+            styleOverrides: {
+              body: {
+                backgroundColor: prefersDarkMode ? '#0d1117' : '#f5f5f5',
+              },
+            },
+          },
         },
       }),
     [prefersDarkMode]

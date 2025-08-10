@@ -42,7 +42,6 @@
   padding: 2px 16px;
   font-weight: 100;
   font-size: 0.9rem;
-  color: #fff !important;
   margin: 4px !important;
   border-width: 1.5px;
   min-height: 32px;
@@ -50,37 +49,82 @@
   line-height: 28px;
 }
 
-.revenue-btn {
-  background-color: rgb(50, 0, 0) !important;
-  border-color: #ff4500 !important;
-}
-.revenue-btn.selected,
-.revenue-btn.Mui-selected,
-.revenue-btn:hover {
-  background-color: #ff4500 !important;
-  color: #fff !important;
+/* Light mode button styles */
+@media (prefers-color-scheme: light) {
+  .revenue-btn {
+    background-color: rgba(255, 69, 0, 0.1) !important;
+    border-color: #ff4500 !important;
+    color: #ff4500 !important;
+  }
+  .revenue-btn.selected,
+  .revenue-btn.Mui-selected,
+  .revenue-btn:hover {
+    background-color: #ff4500 !important;
+    color: #fff !important;
+  }
+
+  .purchases-btn {
+    background-color: rgba(76, 175, 80, 0.1) !important;
+    border-color: #4caf50 !important;
+    color: #4caf50 !important;
+  }
+  .purchases-btn.selected,
+  .purchases-btn.Mui-selected,
+  .purchases-btn:hover {
+    background-color: #4caf50 !important;
+    color: #fff !important;
+  }
+
+  .users-btn {
+    background-color: rgba(0, 127, 181, 0.1) !important;
+    border-color: #007fb5ff !important;
+    color: #007fb5ff !important;
+  }
+  .users-btn.selected,
+  .users-btn.Mui-selected, 
+  .users-btn:hover {
+    background-color: #007fb5ff !important;
+    color: #fff !important;
+  }
 }
 
-.purchases-btn {
-  background-color: rgb(0, 50, 0) !important;
-  border-color: #4caf50 !important;
-}
-.purchases-btn.selected,
-.purchases-btn.Mui-selected,
-.purchases-btn:hover {
-  background-color: #4caf50 !important;
-  color: #fff !important;
-}
+/* Dark mode button styles */
+@media (prefers-color-scheme: dark) {
+  .revenue-btn {
+    background-color: rgba(255, 69, 0, 0.2) !important;
+    border-color: #ff4500 !important;
+    color: #fff !important;
+  }
+  .revenue-btn.selected,
+  .revenue-btn.Mui-selected,
+  .revenue-btn:hover {
+    background-color: #ff4500 !important;
+    color: #fff !important;
+  }
 
-.users-btn {
-  background-color: rgb(0, 0, 50) !important;
-  border-color: #007fb5ff !important;
-}
-.users-btn.selected,
-.users-btn.Mui-selected, 
-.users-btn:hover {
-  background-color: #007fb5ff !important;
-  color: #fff !important;
+  .purchases-btn {
+    background-color: rgba(76, 175, 80, 0.2) !important;
+    border-color: #4caf50 !important;
+    color: #fff !important;
+  }
+  .purchases-btn.selected,
+  .purchases-btn.Mui-selected,
+  .purchases-btn:hover {
+    background-color: #4caf50 !important;
+    color: #fff !important;
+  }
+
+  .users-btn {
+    background-color: rgba(0, 127, 181, 0.2) !important;
+    border-color: #007fb5ff !important;
+    color: #fff !important;
+  }
+  .users-btn.selected,
+  .users-btn.Mui-selected, 
+  .users-btn:hover {
+    background-color: #007fb5ff !important;
+    color: #fff !important;
+  }
 }
 
 
@@ -187,17 +231,47 @@
   min-height: 4px;     /* enforce visible thickness */
   margin: 16px 0;
   border-radius: 2px;  /* smoother edges at any scale */
-  background: linear-gradient(90deg,rgb(12, 15, 35) 0%, rgb(34, 41, 98) 25%, rgb(133, 247, 255) 50%,rgb(34, 41, 98) 75%, rgb(12, 15, 35) 100%);
-  background-size: 200% 100%;
-  animation: gradientShift 3s ease-in-out infinite, shadowShift 3s ease-in-out infinite;
+  background-size: 400% 100%;  /* Make gradient much wider so position changes are visible */
+  background-position: 0% 50%; /* Set initial position */
   transform: translateZ(0);          /* force GPU compositing to reduce flicker */
   will-change: background-position, box-shadow;
   z-index: 1;
 }
 
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes shadowShiftLight {
+  0%, 100% { box-shadow: 0 0 8px rgba(30, 144, 255, 0.6); }
+  50% { box-shadow: 0 0 8px rgba(70, 130, 180, 0.8); }
+}
+
+@keyframes shadowShiftDark {
+  0%, 100% { box-shadow: 0 0 8px rgba(102, 126, 234, 1.0); }
+  50% { box-shadow: 0 0 8px rgba(118, 75, 162, 1.0); }
+}
+
+@media (prefers-color-scheme: light) {
+  .ai-brief-gradient {
+  /* Use background-image to avoid resetting background-size/position */
+  background-image: linear-gradient(90deg, rgb(21, 101, 192) 0%, rgb(41, 182, 246) 25%, rgb(0, 172, 193) 50%, rgb(41, 182, 246) 75%, rgb(21, 101, 192) 100%);
+    animation: gradientShift 3s ease-in-out infinite, shadowShiftLight 3s ease-in-out infinite;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ai-brief-gradient {
+  /* Use background-image to avoid resetting background-size/position */
+  background-image: linear-gradient(90deg,rgb(12, 15, 35) 0%, rgb(34, 41, 98) 25%, rgb(133, 247, 255) 50%,rgb(34, 41, 98) 75%, rgb(12, 15, 35) 100%);
+    animation: gradientShift 3s ease-in-out infinite, shadowShiftDark 3s ease-in-out infinite;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ai-brief-gradient {
-    animation: none;
+    animation: none !important;
   }
 }
 /* Smaller, centered disclaimer under AI brief */
@@ -205,17 +279,11 @@
   font-size: 0.8rem;
   font-weight: 600;
   text-align: center;
-  color: GrayText;
+  color: #666666;
   margin: 0;
 }
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-@keyframes shadowShift {
-  0%, 100% { box-shadow: 0 0 8px rgba(102, 126, 234, 1.0); }
-  50% { box-shadow: 0 0 8px rgba(118, 75, 162, 1.0); }
-}
+
+/* Removed duplicate theme blocks below to prevent overriding background-size/position */
 
 /* Chart placeholders */
 .chart-placeholder {
@@ -223,9 +291,47 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f5f5f5;
   border-radius: 8px;
   min-height: 400px;
+}
+
+/* Light mode chart placeholder */
+@media (prefers-color-scheme: light) {
+  .chart-placeholder {
+    background-color: #f8f9fa;
+  }
+}
+
+/* Dark mode chart placeholder */
+@media (prefers-color-scheme: dark) {
+  .chart-placeholder {
+    background-color: #2a2a2a;
+  }
+}
+
+/* Background differentiation between page and cards */
+/* Light mode backgrounds */
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #f5f5f5 !important;
+  }
+  
+  /* Ensure MUI cards have a distinct background */
+  .MuiCard-root {
+    background-color: #ffffff !important;
+  }
+}
+
+/* Dark mode backgrounds */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #0d1117 !important;
+  }
+  
+  /* Ensure MUI cards have a distinct background */
+  .MuiCard-root {
+    background-color: #161b22 !important;
+  }
 }
 
 /* Dashboard main box */
@@ -234,10 +340,22 @@
   width: 100%;
   box-sizing: border-box;
   overflow-x: hidden;
-  box-sizing: border-box;
-  overflow-x: hidden;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+/* Light mode dashboard background */
+@media (prefers-color-scheme: light) {
+  .dashboard-main {
+    background-color: #f5f5f5;
+  }
+}
+
+/* Dark mode dashboard background */
+@media (prefers-color-scheme: dark) {
+  .dashboard-main {
+    background-color: #0d1117;
+  }
 }
 .dashboard-header {
   padding-top: 0;     /* tightened top gap */
@@ -455,4 +573,27 @@
 .traffic-sources-count {
   color: #cccccc;
   font-size: 9px;
+}
+
+/* Traffic Sources legend: theme-aware colors */
+@media (prefers-color-scheme: light) {
+  .traffic-sources-legend-item {
+    /* light gray pill on light cards */
+    background-color: #f0f2f5;
+    border: 1px solid #d0d7de;
+  }
+  .traffic-sources-name { color: #111827; }
+  .traffic-sources-count { color: #6b7280; }
+  .traffic-sources-color-square { border-color: #6b7280; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .traffic-sources-legend-item {
+    /* dark gray pill on dark cards */
+    background-color: #30363d;
+    border: 1px solid #3d444d;
+  }
+  .traffic-sources-name { color: #e6edf3; }
+  .traffic-sources-count { color: #9da7b3; }
+  .traffic-sources-color-square { border-color: rgba(255, 255, 255, 0.9); }
 }
