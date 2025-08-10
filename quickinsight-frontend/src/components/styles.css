@@ -180,11 +180,33 @@
 
 /* AI Brief gradient bar */
 .ai-brief-gradient {
-  height: 3px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;         /* avoid hairline collapse at zoom */
+  min-height: 4px;     /* enforce visible thickness */
   margin: 16px 0;
+  border-radius: 2px;  /* smoother edges at any scale */
   background: linear-gradient(90deg,rgb(12, 15, 35) 0%, rgb(34, 41, 98) 25%, rgb(133, 247, 255) 50%,rgb(34, 41, 98) 75%, rgb(12, 15, 35) 100%);
   background-size: 200% 100%;
   animation: gradientShift 3s ease-in-out infinite, shadowShift 3s ease-in-out infinite;
+  transform: translateZ(0);          /* force GPU compositing to reduce flicker */
+  will-change: background-position, box-shadow;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-brief-gradient {
+    animation: none;
+  }
+}
+/* Smaller, centered disclaimer under AI brief */
+.ai-brief-disclaimer {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: GrayText;
+  margin: 0;
 }
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
@@ -235,6 +257,30 @@
   display: flex;
   gap: 8px; /* tighter spacing between buttons */
   width: auto; /* prevent stretching on desktop */
+  margin-right: 12px; /* right spacing for buttons only (desktop) */
+}
+/* Ensure toggle buttons look like pills even when grouped */
+.dashboard-btn-group .MuiToggleButton-root,
+.dashboard-btn-group .MuiToggleButtonGroup-grouped {
+  border-radius: 100px !important;
+  text-transform: none;
+  padding: 6px 12px; /* mimic px:3, py:1 */
+  font-weight: 500;
+}
+.dashboard-btn-group .MuiToggleButtonGroup-grouped:not(:first-of-type) {
+  margin-left: 8px !important; /* avoid merged edges if group style collapses */
+}
+/* Right-aligned container for range controls with caption beneath */
+.dashboard-range-controls {
+  display: flex;
+  flex-direction: row; /* Change to row for desktop side-by-side layout */
+  align-items: center; /* Center vertically on desktop */
+  gap: 16px; /* Add space between caption and buttons */
+}
+.dashboard-range-caption {
+  margin: 0; /* Remove all margins for desktop */
+  text-align: right;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 /* Ensure buttons size to content by default (desktop/medium) */
 .dashboard-btn-group .MuiToggleButton-root {
@@ -298,6 +344,17 @@
   .dashboard-header h1 { text-align: center; width: 100%; }
   .dashboard-btn-group {
     width: 100%;
+  margin-right: 0; /* no extra right spacing on mobile */
+  }
+  .dashboard-range-controls { 
+    align-items: stretch; 
+    flex-direction: column; /* Stack vertically on mobile */
+    gap: 8px; /* Smaller gap on mobile */
+  }
+  .dashboard-range-caption { 
+    text-align: center; 
+    margin-top: 6px; /* Add back top margin on mobile */
+    margin-right: 0; 
   }
   .dashboard-btn-group .MuiToggleButton-root {
     flex: 1 1 0;
@@ -358,4 +415,44 @@
   .card-brief {
     width: 100% !important; /* one per row */
   }
+}
+
+/* Traffic Sources component styles */
+.traffic-sources-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.traffic-sources-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.traffic-sources-color-square {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 1px solid white;
+  flex-shrink: 0;
+}
+
+.traffic-sources-name {
+  color: white;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.traffic-sources-count {
+  color: #cccccc;
+  font-size: 9px;
 }

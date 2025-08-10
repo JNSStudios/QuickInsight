@@ -336,37 +336,38 @@ export default function Dashboard() {
               {ranges.find(r => r.value === viewingDataRange)?.label || `Past ${viewingDataRange} months`}
             </b>
           </Typography>
-          <ToggleButtonGroup
-            value={viewingDataRange}
-            exclusive
-            onChange={handleViewingDataRangeChange}
-            className="dashboard-btn-group"
-            fullWidth={isMobile}
-            sx={{
-              '& .MuiToggleButton-root': {
-                borderRadius: '100px',
-                textTransform: 'none',
-                px: 3,
-                py: 1,
-                fontWeight: 500,
-              },
-            }}
-          >
-            {ranges.map(({ value, label, shortLabel }) => {
-              const disabled = value > maxDataRange;
-              const button = (
-                <ToggleButton value={value} disabled={disabled} key={value} aria-label={label}>
-                  {isMobile ? shortLabel : label}
-                </ToggleButton>
-              );
-              
-              return disabled ? (
-                <Tooltip title={`Need at least ${value} month${value != 1 ? 's' : ''} of data`} arrow disableInteractive key={value}>
-                  <span>{button}</span>
-                </Tooltip>
-              ) : button;
-            })}
-          </ToggleButtonGroup>
+          <Box className="dashboard-range-controls">
+            <Typography
+              variant="caption"
+              color="text.secondary"
+              className="dashboard-range-caption"
+              component="div"
+            >
+              Data range limited to {maxDataRange} month{maxDataRange !== 1 ? 's' : ''}
+            </Typography>
+            <ToggleButtonGroup
+              value={viewingDataRange}
+              exclusive
+              onChange={handleViewingDataRangeChange}
+              className="dashboard-btn-group"
+              fullWidth={isMobile}
+            >
+              {ranges.map(({ value, label, shortLabel }) => {
+                const disabled = value > maxDataRange;
+                const button = (
+                  <ToggleButton value={value} disabled={disabled} key={value} aria-label={label}>
+                    {isMobile ? shortLabel : label}
+                  </ToggleButton>
+                );
+                
+                return disabled ? (
+                  <Tooltip title={`Need at least ${value} month${value != 1 ? 's' : ''} of data`} arrow disableInteractive key={value}>
+                    <span>{button}</span>
+                  </Tooltip>
+                ) : button;
+              })}
+            </ToggleButtonGroup>
+          </Box>
         </Box>
         
         <Grid container spacing={2} justifyContent="center">
@@ -412,7 +413,7 @@ export default function Dashboard() {
             <Box style={{ marginTop: 'auto' }}>
               <hr style={{ color: '#333'}} />
 
-              <p style={{ fontWeight: 'bold', textAlign: 'center', color: 'GrayText'}}>
+              <p className="ai-brief-disclaimer">
                 AI can be incorrect. Verify its statements.
               </p>
             </Box>
